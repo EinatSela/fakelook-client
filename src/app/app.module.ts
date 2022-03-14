@@ -8,14 +8,14 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PostsComponent } from './components/posts/posts.component';
-import { SingupFormComponent } from './singup-form/singup-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingupFormComponent,
     SignInComponent,
     PostsComponent,
+    SignupFormComponent,
   ],
   imports: [
     BrowserModule,
