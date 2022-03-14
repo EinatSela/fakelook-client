@@ -1,0 +1,58 @@
+<form action="">
+    <div class="container">
+        <div class="first-name headline">
+            First Name:
+        </div> 
+        <div class="first-name-input">
+            <input type="text" #firstname>
+        </div>
+        <div class="last-name headline">
+            Last Name: 
+        </div> 
+        <div class="last-name-input">
+            <input type="text" #lastname>
+        </div>
+        <div class="age headline">
+            Age:
+        </div> 
+        <div class="age-input"> 
+            <input type="number" #age>
+        </div>
+        <div class="workplace headline">
+            Workplace:
+        </div> 
+        <div class="workplace-input">
+            <input type="text" #workplace>
+        </div>
+        <div class="address headline">
+            Address: 
+        </div> 
+        <div class="address-input">
+            <input type="text" #address>
+        </div>
+        <div class="username headline">
+            Username:
+        </div> 
+        <div class="username-input">
+            <input type="text" #username>
+        </div>
+        <div class="password headline">
+            Password:
+        </div> 
+        <div class="password-input">
+            <input type="password" #password>
+        </div>
+        <div class="password-confirm headline">
+            Confirm Password:
+        </div> 
+        <div class="password-confirm-input">
+            <input type="password" #password-confirmation>
+        </div>
+    </div>
+    <div class="button">
+        <button (click)="addUser(firstname.value, lastname.value, age.value,
+        address.value, workplace.value, username.value, password.value, password-confirmation.value)">
+            Sign-Up
+        </button>
+    </div>
+</form>

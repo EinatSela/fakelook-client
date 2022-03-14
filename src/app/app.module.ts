@@ -8,15 +8,23 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PostsComponent } from './components/posts/posts.component';
+import { SingupFormComponent } from './singup-form/singup-form.component'
 
 @NgModule({
-  declarations: [AppComponent, SignInComponent, PostsComponent],
+  declarations: [
+    AppComponent,
+    SingupFormComponent,
+    SignInComponent, PostsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
     HttpClientModule,
     FormsModule,
+=======
+>>>>>>> main
   ],
   providers: [],
   bootstrap: [AppComponent],
