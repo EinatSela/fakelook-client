@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  grid-template-columns: 60% 30%;
+  height: 100%;
+}
+
+.left {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
