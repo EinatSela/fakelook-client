@@ -10,6 +10,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MainFeedComponent } from './components/main-feed/main-feed.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
     SignupFormComponent,
     AddPostComponent,
     HeaderComponent,
+    MainFeedComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

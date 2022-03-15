@@ -1,0 +1,10 @@
+div {
+  overflow: auto;
+  border: 5px solid cadetblue;
+  display: flex;
+  flex-direction: column;
+}
+img {
+  width: 25%;
+  height: 25%;
+}
