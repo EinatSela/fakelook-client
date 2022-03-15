@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SignInService } from 'src/app/services/sign-in.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -8,7 +10,14 @@ import { SignInService } from 'src/app/services/sign-in.service';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
-  constructor(private signInService: SignInService) {}
+  constructor(private signInService: SignInService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  goToSignup(){
+    this.router.navigate(['/signup']);
+    console.log("clicked");
+  }
+
 }
+
