@@ -1,21 +1,53 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { SignUpService } from '../services/sign-up.service';
 
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
-  styleUrls: ['./signup-form.component.css']
+  styleUrls: ['./signup-form.component.css'],
 })
 export class SignupFormComponent implements OnInit {
+  // public posts$: Observable<any> | undefined;
 
-  constructor() { }
+  newUser?: User;
 
-  ngOnInit(): void {
-  }
+  constructor(private signupService: SignUpService) {}
 
-  addUser(firstname:string, lastname:string, age:string, address:string, 
-    workplace:string, username:string, password:string, passwordconfirmation:string)
-    {
+  ngOnInit(): void {}
 
+  addUser(
+    newFirstname: string,
+    newLastname: string,
+    newAge: string,
+    newAddress: string,
+    newWorkplace: string,
+    newUsername: string,
+    newPassword: string,
+    newPasswordconfirmation: string
+  ) {
+    if (newPassword != newPasswordconfirmation) {
     }
-
+    if (
+      newFirstname &&
+      newLastname &&
+      newAge &&
+      newAddress &&
+      newWorkplace &&
+      newUsername &&
+      newPassword &&
+      newPasswordconfirmation
+    ) {
+      this.newUser = {
+        FirstName: newFirstname,
+        LastName: newLastname,
+        UserName: newUsername,
+        WorkPlace: newWorkplace,
+        Password: newPassword,
+        Address: newAddress,
+        Age: newAge,
+      };
+      this.signupService.addUser(this.newUser);
+    }
+  }
 }

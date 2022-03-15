@@ -1,19 +1,9 @@
-h1 {
-  background-color: blue;
-  text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
 .container {
   display: grid;
   grid-template-columns: 60% 30%;
   height: 100%;
 }
-h1 {
-  text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
+
 .left {
   text-align: center;
   margin-top: auto;
@@ -154,7 +144,6 @@ input[type="submit"] {
   color: #fff;
   font-weight: bold;
   text-transform: uppercase;
-  cursor: pointer;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   font-size: 18px;
@@ -169,11 +158,12 @@ input[type="submit"]:hover {
   transition: all 0.2s ease;
 }
 
-#create-account-wrap {
+.create-account-wrap {
   background-color: #eeedf1;
   color: #8a8b8e;
   font-size: 14px;
   width: 100%;
   padding: 10px 0;
   border-radius: 0 0 4px 4px;
+  cursor:pointer;
 }
