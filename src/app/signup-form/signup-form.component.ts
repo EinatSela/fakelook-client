@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import user from 'src/app/models/user';
+import { SignUpService } from 'src/app/services/sign-up.service';
+
 
 @Component({
   selector: 'app-signup-form',
@@ -7,15 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupFormComponent implements OnInit {
 
-  constructor() { }
+  // public posts$: Observable<any> | undefined;
+
+
+  newUser? : user;
+
+
+  constructor(private signupService: SignUpService) { }
 
   ngOnInit(): void {
   }
 
-  addUser(firstname:string, lastname:string, age:string, address:string, 
-    workplace:string, username:string, password:string, passwordconfirmation:string)
+  addUser(newFirstname:string, newLastname:string, newAge:string, newAddress:string, 
+    newWorkplace:string, newUsername:string, newPassword:string, newPasswordconfirmation:string)
     {
+      if(newPassword != newPasswordconfirmation)
+      {
 
+      }
+      if (newFirstname&& newLastname&& newAge&& newAddress&&newWorkplace&& newUsername&& newPassword&& newPasswordconfirmation)
+      {
+        this.newUser = {
+        FirstName : newFirstname,
+        LastName : newLastname,
+        UserName : newUsername,
+        WorkPlace : newWorkplace,
+        Password : newPassword,
+        Address : newAddress,
+        Age : newAge
+        };
+        this.signupService.addUser(this.newUser);
+      }
     }
 
 }
