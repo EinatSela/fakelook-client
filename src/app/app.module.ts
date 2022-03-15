@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PostsComponent } from './components/posts/posts.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
     SignInComponent,
     PostsComponent,
     SignupFormComponent,
+    AddPostComponent,
     HeaderComponent,
   ],
   imports: [

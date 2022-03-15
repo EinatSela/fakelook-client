@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Add New Post</h1>
+
+  <div>
+    <label>
+      Update Description
+      <input
+        type="text"
+        value=""
+        placeholder="description"
+        [(ngModel)]="description"
+      />
+    </label>
+  </div>
+  <div>
+    <label>
+      Update imageSorce
+      <input
+        type="text"
+        value=""
+        placeholder="imageSorce"
+        [(ngModel)]="imageSorce"
+      />
+    </label>
+  </div>
+  <button (click)="createPost()">Submit</button>
+</div>

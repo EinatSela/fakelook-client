@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
+=======
+>>>>>>> Yael-angular
 import { User } from '../models/user';
 
 @Injectable({
