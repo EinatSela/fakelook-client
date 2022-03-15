@@ -19,5 +19,10 @@ export class SignInComponent implements OnInit {
     console.log("clicked");
   }
 
+  login(){
+  //check if login is legal
+    this.router.navigate(['/posts']);
+  }
+
 }
 

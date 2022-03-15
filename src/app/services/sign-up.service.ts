@@ -7,7 +7,7 @@ import User from '../models/user';
   providedIn: 'root'
 })
 export class SignUpService {
-  private userUrl = 'https://localhost:44349/api/Users/SaveUser';
+  private userUrl = 'https://localhost:44349/api/Users/SignUp';
 
   constructor(private http: HttpClient) {}
 
