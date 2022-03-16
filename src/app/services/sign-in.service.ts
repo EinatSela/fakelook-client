@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { TokenService } from './token.service';
+import { TokenService } from './TokenService';
 
 @Injectable({
   providedIn: 'root',
