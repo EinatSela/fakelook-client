@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -18,7 +19,7 @@ export class AddPostComponent implements OnInit {
   longitude: number = 0;
   latitude: number = 0;
 
-  constructor(private postService: PostsService) {
+  constructor(private postService: PostsService, private router: Router) {
     this.date = new Date();
   }
 
@@ -37,6 +38,9 @@ export class AddPostComponent implements OnInit {
       userId: 4,
     };
     this.postService.newPost(newPost);
+    this.router.navigate(['main-feed']).then(() => {
+      window.location.reload();
+    });
   }
   public getLocation(): void {
     if (navigator.geolocation) {

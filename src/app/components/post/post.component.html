@@ -1,5 +1,19 @@
 <div>
   <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
-  {{ post?.description }}
-  {{ post?.userId }}
+  <a>
+    {{ post?.description }}
+  </a>
+  <a>
+    {{ post?.userId }}
+  </a>
+
+  <a
+    [routerLink]="['/edit-post']"
+    [queryParams]="{
+      id: post?.id,
+      desc: post?.description,
+      img: post?.imageSorce
+    }"
+    >Edit</a
+  >
 </div>

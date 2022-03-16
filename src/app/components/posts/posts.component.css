@@ -1,0 +1,8 @@
+app-post {
+  margin: 1px;
+}
+.allPost {
+  overflow: scroll;
+  height: 50%;
+  background-color: beige;
+}

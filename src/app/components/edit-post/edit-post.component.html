@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Edit Post</h1>
+
+  <div>
+    <label>
+      Update Description
+      <input type="text" [(ngModel)]="description" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Update imageSorce
+      <input type="text" [(ngModel)]="imageSorce" />
+    </label>
+  </div>
+  <button (click)="updatePost()">Update</button>
+</div>

@@ -12,6 +12,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { PostComponent } from './components/post/post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PostComponent } from './components/post/post.component';
     HeaderComponent,
     MainFeedComponent,
     PostComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
