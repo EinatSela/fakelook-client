@@ -16,7 +16,7 @@ export class SignInService {
 
   
   constructor(private http: HttpClient, private router: Router) {
-    this.tokenService = new TokenService();
+    this.tokenService = new TokenService(http);
   }
 
   
