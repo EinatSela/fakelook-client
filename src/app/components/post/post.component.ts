@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 
 @Component({
@@ -7,8 +8,8 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  @Input() post?: Post;
-  constructor() {}
+  @Input() post?: any;
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 }

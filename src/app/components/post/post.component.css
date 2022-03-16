@@ -2,9 +2,13 @@ div {
   overflow: auto;
   border: 5px solid cadetblue;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 img {
   width: 25%;
-  height: 25%;
+  height: 100%;
+  justify-content: center;
+}
+a {
+  padding: 10%;
 }

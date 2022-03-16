@@ -26,4 +26,12 @@ export class PostsService {
     };
     this.http.post<Post>(this.postUrl + 'Add', post, httpOptions).subscribe();
   }
+  public EditPost(post: any) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    this.http.put<Post>(this.postUrl + 'Edit', post, httpOptions).subscribe();
+  }
 }
