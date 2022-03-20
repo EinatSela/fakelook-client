@@ -25,6 +25,8 @@ export class LikesService {
         'Content-Type': 'application/json',
       }),
     };
-    this.http.post<Like>(this.postUrl + 'Add', like, httpOptions).subscribe();
+    this.http
+      .post<Like>(this.postUrl + 'Add', like, httpOptions)
+      .subscribe((res) => {});
   }
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostsService } from 'src/app/services/posts.service';
 
@@ -9,6 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./add-post.component.css'],
 })
 export class AddPostComponent implements OnInit {
+  id: string | null = '';
   description: string = '';
   imageSorce: string = '';
   date: Date;
@@ -19,11 +20,16 @@ export class AddPostComponent implements OnInit {
   longitude: number = 0;
   latitude: number = 0;
 
-  constructor(private postService: PostsService, private router: Router) {
+  constructor(
+    private postService: PostsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.date = new Date();
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.queryParamMap.get('id');
     this.getLocation();
   }
   createPost() {
@@ -35,7 +41,7 @@ export class AddPostComponent implements OnInit {
       x_Position: this.x_Position,
       y_Position: this.y_Position,
       z_Position: this.z_Position,
-      userId: 4,
+      userId: Number(this.id),
     };
     this.postService.newPost(newPost);
     this.router.navigate(['main-feed']).then(() => {

@@ -12,14 +12,18 @@ import { LikesService } from 'src/app/services/likes.service';
 })
 export class PostComponent implements OnInit {
   @Input() post?: any;
-  public likes$: Observable<any> | undefined;
+  public likes$?: any[];
+  public LikeBtn: boolean = true;
 
   constructor(private router: Router, private likesService: LikesService) {}
 
   ngOnInit(): void {
-    this.likes$ = this.likesService.getLikesByPostId(this.post.id);
+    this.likesService
+      .getLikesByPostId(this.post.id)
+      .subscribe((res) => (this.likes$ = res));
   }
   addLike() {
+    this.LikeBtn = !this.LikeBtn;
     let like: Like;
     like = {
       //todo
@@ -28,6 +32,7 @@ export class PostComponent implements OnInit {
       isActive: true,
     };
     this.likesService.addLike(like);
+    window.location.reload();
     return false;
   }
 }
