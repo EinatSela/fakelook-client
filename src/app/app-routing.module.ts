@@ -4,8 +4,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
-import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
