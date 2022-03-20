@@ -1,3 +1,7 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <div>
   <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
   <a>
@@ -6,7 +10,6 @@
   <a>
     {{ post?.userId }}
   </a>
-
   <a
     [routerLink]="['/edit-post']"
     [queryParams]="{
@@ -17,3 +20,7 @@
     >Edit</a
   >
 </div>
+<button type="button" (click)="addLike()">
+  <i class="fa fa-thumbs-up"></i>
+</button>
+<a *ngFor="let like of likes$ | async">Like:{{ like.userId }}</a>
