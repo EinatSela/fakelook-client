@@ -167,3 +167,7 @@ input[type="submit"]:hover {
   border-radius: 0 0 4px 4px;
   cursor:pointer;
 }
+
+.left a{
+  color: #ce5c74;
+}
