@@ -4,5 +4,6 @@ app-post {
 .allPost {
   overflow: scroll;
   height: 50%;
-  background-color: beige;
 }
+
+
