@@ -1,9 +1,4 @@
-<p>posts works!</p>
 <div class="allPost">
-<div>
-    Current User ID:
-    {{tokenID$ | async}}
-</div>
 <div>
   <div *ngFor="let post of posts$ | async">
     <app-post [post]="post"> </app-post>

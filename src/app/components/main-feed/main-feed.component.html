@@ -1,12 +1,13 @@
-<p>main-feed works!</p>
 <div class="container">
   <div class="left">
     <div class="Up">
-      <button (click)="addNewPost()">ADD NEW POST</button>
-      <button>ADD NEW CIRCLE</button>
+      <div class="userid">
+        Welcome User {{tokenID$ | async}}
+      </div>
+      <button (click)="addNewPost()">Add New Post</button>
+      <button>Manage Friends</button>
     </div>
     <div class="down">
-      <a>second</a>
     </div>
   </div>
   <app-posts></app-posts>

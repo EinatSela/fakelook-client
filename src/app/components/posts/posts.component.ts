@@ -10,13 +10,11 @@ import { TokenService } from 'src/app/services/TokenService';
 })
 export class PostsComponent implements OnInit {
   public posts$: Observable<any> | undefined;
-  public tokenID$ :Observable<any> | undefined;
   
-  constructor(private postsService: PostsService, private tokenService : TokenService) {
+  constructor(private postsService: PostsService) {
   }
 
   ngOnInit(): void {
     this.posts$ = this.postsService.getAllPosts();
-    this.tokenID$ = this.tokenService.getToken();
   }
 }

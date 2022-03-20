@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
     MainFeedComponent,
     PostComponent,
     EditPostComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,27 @@
-<div>
-  <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
-  <a>
-    {{ post?.description }}
-  </a>
-  <a>
-    {{ post?.userId }}
-  </a>
+<div class="container">
+  <div class="image">
+    <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
+  </div>
+  <div class="text">
+    <div>
+      <div class="username">
+        User {{ post?.userId }}
+      </div>
+      <div class="description">
+        {{ post?.description }}
+      </div>
+    </div>
+    
 
-  <a
-    [routerLink]="['/edit-post']"
+  </div>
+  <div class="edit-button">
+    <button [routerLink]="['/edit-post']"
     [queryParams]="{
       id: post?.id,
       desc: post?.description,
       img: post?.imageSorce
-    }"
-    >Edit</a
-  >
+    }">Edit</button>
+    
+  </div>
+  
 </div>

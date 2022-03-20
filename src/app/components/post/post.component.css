@@ -1,14 +1,41 @@
-div {
-  overflow: auto;
-  border: 5px solid cadetblue;
-  display: flex;
-  flex-direction: row;
+.container {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  
+  border: 1px solid black;
+  border-width: 1px 0px 1px 0px;
+  padding: 1%;
+  margin: 0;
 }
 img {
-  width: 25%;
-  height: 100%;
+  width: 100%;
+  height: auto;
   justify-content: center;
 }
-a {
-  padding: 10%;
+.image{
+  text-align: right;
+  margin-right: 3%;
 }
+
+.text{
+  display: flex;
+  font-size: medium;
+  text-align: left;
+  align-items: center;
+}
+
+.edit-button{
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.username{
+  font-weight: 500;
+}
+
+.description{
+  font-size: small;
+}
+
