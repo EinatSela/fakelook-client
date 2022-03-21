@@ -7,6 +7,7 @@ import { LikesService } from 'src/app/services/likes.service';
 import { TokenService } from 'src/app/services/TokenService';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditPostComponent } from '../edit-post/edit-post.component';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-post',
@@ -19,7 +20,7 @@ export class PostComponent implements OnInit {
   public likes$?: any[];
   public LikeBtn: boolean = true;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private postService: PostsService) {}
 
   ngOnInit(): void {
     // this.likesService
@@ -42,19 +43,24 @@ export class PostComponent implements OnInit {
       console.log(data);
       this.post.imageSorce = data.imageSorce;
       this.post.description = data.description;
+      this.update();
     });
   }
-  //   addLike() {
-  //     this.LikeBtn = !this.LikeBtn;
-  //     let like: ILike;
-  //     like = {
-  //       userId: this.userId$!,
-  //       postId: this.post.id,
-  //       isActive: true,
-  //     };
-  //     this.likesService.addLike(like);
-  //     window.location.reload();
-  //     return false;
+  update() {
+    this.postService.EditPost(this.post).subscribe();
+  }
+  //     addLike() {
+  //       this.LikeBtn = !this.LikeBtn;
+  //       let like: ILike;
+  //       like = {
+  //         userId: this.userId$!,
+  //         postId: this.post.id,
+  //         isActive: true,
+  //       };
+  //       this.likesService.addLike(like);
+  //       window.location.reload();
+  //       return false;
+  //     }
   //   }
   // }
 }

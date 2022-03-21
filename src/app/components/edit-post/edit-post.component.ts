@@ -23,21 +23,20 @@ export class EditPostComponent {
   afterEdit?: Observable<IPost>;
   constructor(
     public dialogRef: MatDialogRef<EditPostComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: PostData,
-    private postService: PostsService
+    @Inject(MAT_DIALOG_DATA) public data: PostData
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  update() {
-    let newPost: any;
-    newPost = {
-      id: this.data.id,
-      description: this.data.description,
-      imageSorce: this.data.imageSorce,
-    };
-    this.postService.EditPost(newPost).subscribe((newPost) => {});
-    this.dialogRef.close();
-  }
+  // update() {
+  //   let newPost: any;
+  //   newPost = {
+  //     id: this.data.id,
+  //     description: this.data.description,
+  //     imageSorce: this.data.imageSorce,
+  //   };
+  //   this.postService.EditPost(newPost).subscribe((newPost) => {});
+  //   this.dialogRef.close();
+  // }
 }
