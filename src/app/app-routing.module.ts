@@ -6,6 +6,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { MapComponent } from './components/map/map.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
 
 const routes: Routes = [
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'main-feed', component: MainFeedComponent },
   { path: 'post-view', component: PostViewComponent },
   { path: '', component: SignInComponent },
+  { path: 'mao', component: MapComponent },
+  { path: '', component: PostsComponent },
 ];
 
 @NgModule({

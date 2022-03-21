@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
 
   login(NewUserName: string, newPassword: string) {
     this.user = {
-      UserName: NewUserName,
+      userName: NewUserName,
       Password: newPassword,
     };
     //check if login is legal

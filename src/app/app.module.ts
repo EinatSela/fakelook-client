@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AngularCesiumModule } from 'angular-cesium';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +15,14 @@ import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
+<<<<<<< HEAD
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+=======
+import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
+import {MatTabsModule} from '@angular/material/tabs';
+
+>>>>>>> 18a628d32d5ea6f3fc895db6246d7f47061bf053
 
 @NgModule({
   declarations: [
@@ -29,7 +36,11 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     PostComponent,
     EditPostComponent,
     MapComponent,
+<<<<<<< HEAD
     PostViewComponent,
+=======
+    MainFeedLeftComponent,
+>>>>>>> 18a628d32d5ea6f3fc895db6246d7f47061bf053
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+<<<<<<< HEAD
     MatDialogModule,
+=======
+    MatTabsModule,
+    AngularCesiumModule.forRoot(),
+>>>>>>> 18a628d32d5ea6f3fc895db6246d7f47061bf053
   ],
   providers: [],
   bootstrap: [AppComponent],
