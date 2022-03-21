@@ -16,6 +16,7 @@ import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
 import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-lef
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    MatTabsModule,
     AngularCesiumModule.forRoot(),
   ],
   providers: [],
