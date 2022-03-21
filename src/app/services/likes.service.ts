@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Like } from '../models/like';
+import { ILike } from '../models/Ilike';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +18,14 @@ export class LikesService {
     //let params = new HttpParams().set('id', id)
     return this.http.get<any>(this.postUrl + 'PostId?id=' + id, httpOptions);
   }
-  public addLike(like: Like) {
+  public addLike(like: ILike) {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
     this.http
-      .post<Like>(this.postUrl + 'Add', like, httpOptions)
+      .post<ILike>(this.postUrl + 'Add', like, httpOptions)
       .subscribe((res) => {});
   }
 }

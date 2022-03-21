@@ -7,19 +7,19 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
+import { PostViewComponent } from './components/post-view/post-view.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
   { path: 'signin', component: SignInComponent },
-  { path: 'posts', component: PostsComponent},
+  { path: 'posts', component: PostsComponent },
   { path: 'add-post', component: AddPostComponent },
   { path: 'edit-post', component: EditPostComponent },
   { path: 'main-feed', component: MainFeedComponent },
+  { path: 'post-view', component: PostViewComponent },
   { path: '', component: SignInComponent },
   { path: 'mao', component: MapComponent },
-  { path: '', component: PostsComponent},
-
-
+  { path: '', component: PostsComponent },
 ];
 
 @NgModule({

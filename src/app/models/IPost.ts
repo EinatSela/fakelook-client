@@ -1,4 +1,5 @@
-export interface Post {
+export interface IPost {
+  id?: number;
   description: string;
   imageSorce: string;
   x_Position: number;

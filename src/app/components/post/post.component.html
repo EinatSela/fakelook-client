@@ -15,22 +15,13 @@
     </div>
   </div>
   <div class="edit-button">
-    <button
-      [routerLink]="['/edit-post']"
-      [queryParams]="{
-        id: post?.id,
-        desc: post?.description,
-        img: post?.imageSorce
-      }"
-    >
-      Edit
-    </button>
+    <button (click)="Edit()">Edit</button>
   </div>
 </div>
-<button type="button" (click)="addLike()">
-  <!-- *ngif="LikeBtn" ? :class="fa fa-thumbs-down" -->
-  <i class="fa fa-thumbs-up"></i>
-</button>
-<a>{{ likes$!.length }}</a>
+<!-- <button type="button" (click)="addLike()"> -->
+<!-- *ngif="LikeBtn" ? :class="fa fa-thumbs-down" -->
+<!-- <i class="fa fa-thumbs-up"></i>
+</button> -->
+<!-- <a>{{ likes$!.length }}</a> -->
 
 <!-- <a *ngFor="let like of likes$">Like:{{ like.userId }}</a> -->

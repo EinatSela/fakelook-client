@@ -1,9 +1,9 @@
 .container {
-  display: grid;
-  grid-template-columns: 40% 60%;
+  display: flex;
+  flex-direction: row;
   height: 100%;
 }
 
-.feed{
+.feed {
   height: 100%;
 }
