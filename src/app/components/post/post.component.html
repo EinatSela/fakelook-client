@@ -1,27 +1,36 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <div class="container">
   <div class="image">
     <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
   </div>
   <div class="text">
     <div>
-      <div class="username">
-        User {{ post?.userId }}
-      </div>
+      <div class="username">User {{ post?.userId }}</div>
       <div class="description">
         {{ post?.description }}
       </div>
     </div>
-    
-
   </div>
   <div class="edit-button">
-    <button [routerLink]="['/edit-post']"
-    [queryParams]="{
-      id: post?.id,
-      desc: post?.description,
-      img: post?.imageSorce
-    }">Edit</button>
-    
+    <button
+      [routerLink]="['/edit-post']"
+      [queryParams]="{
+        id: post?.id,
+        desc: post?.description,
+        img: post?.imageSorce
+      }"
+    >
+      Edit
+    </button>
   </div>
-  
 </div>
+<button type="button" (click)="addLike()">
+  <!-- *ngif="LikeBtn" ? :class="fa fa-thumbs-down" -->
+  <i class="fa fa-thumbs-up"></i>
+</button>
+<a>{{ likes$!.length }}</a>
+
+<!-- <a *ngFor="let like of likes$">Like:{{ like.userId }}</a> -->

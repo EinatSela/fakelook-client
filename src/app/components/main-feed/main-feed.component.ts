@@ -10,18 +10,16 @@ import { TokenService } from 'src/app/services/TokenService';
   styleUrls: ['./main-feed.component.css'],
 })
 export class MainFeedComponent implements OnInit {
-  public tokenID$ : number | undefined;
-  public userName$ : Observable<any> | undefined;
 
-  constructor(private router: Router, private tokenService:TokenService) {}
+  public tokenID$: Observable<any> | undefined;
+  public userName$: Observable<any> | undefined;
+  public userId$?: number;
+
+  constructor(private router: Router, private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    this.tokenID$ = this.tokenService.getToken();
-
-
-  }
-
-  addNewPost() {
-    this.router.navigate(['/add-post']);
+    this.tokenService.getToken().subscribe((res) => {
+      this.userId$ = res;
+    });
   }
 }
