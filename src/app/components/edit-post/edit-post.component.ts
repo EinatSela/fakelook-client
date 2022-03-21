@@ -6,9 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { IPost } from 'src/app/models/IPost';
-import { PostsService } from 'src/app/services/posts.service';
 
-import { PostComponent } from '../post/post.component';
 export interface PostData {
   description: string;
   imageSorce: string;
@@ -29,14 +27,4 @@ export class EditPostComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  // update() {
-  //   let newPost: any;
-  //   newPost = {
-  //     id: this.data.id,
-  //     description: this.data.description,
-  //     imageSorce: this.data.imageSorce,
-  //   };
-  //   this.postService.EditPost(newPost).subscribe((newPost) => {});
-  //   this.dialogRef.close();
-  // }
 }
