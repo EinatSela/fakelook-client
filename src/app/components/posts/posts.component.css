@@ -1,9 +1,7 @@
 app-post {
   margin: 1px;
 }
-.allPost {
+.all-post {
   overflow: scroll;
-  height: 50%;
+  height: 100%;
 }
-
-

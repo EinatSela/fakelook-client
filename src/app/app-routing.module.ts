@@ -6,6 +6,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import { PostViewComponent } from './components/post-view/post-view.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'add-post', component: AddPostComponent },
   { path: 'edit-post', component: EditPostComponent },
   { path: 'main-feed', component: MainFeedComponent },
+  { path: 'post-view', component: PostViewComponent },
   { path: '', component: SignInComponent },
 ];
 

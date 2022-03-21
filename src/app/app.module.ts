@@ -14,6 +14,8 @@ import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
+import { PostViewComponent } from './components/post-view/post-view.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { MapComponent } from './components/map/map.component';
     PostComponent,
     EditPostComponent,
     MapComponent,
+    PostViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { MapComponent } from './components/map/map.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
+import { IUser } from '../models/Iuser';
 import { SignUpService } from '../services/sign-up.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { SignUpService } from '../services/sign-up.service';
 export class SignupFormComponent implements OnInit {
   // public posts$: Observable<any> | undefined;
 
-  newUser?: User;
+  newUser?: IUser;
 
   constructor(private signupService: SignUpService) {}
 

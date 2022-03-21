@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from '../models/post';
+import { IPost } from '../models/IPost';
 
 @Injectable({
   providedIn: 'root',
@@ -10,28 +10,28 @@ export class PostsService {
   private postUrl = 'https://localhost:44349/Posts/';
   constructor(private http: HttpClient) {}
 
-  public getAllPosts(): Observable<any[]> {
+  public getAllPosts(): Observable<IPost[]> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    return this.http.get<any>(this.postUrl + 'All', httpOptions);
+    return this.http.get<IPost[]>(this.postUrl + 'All', httpOptions);
   }
-  public newPost(post: Post) {
+  public newPost(post: IPost) {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    this.http.post<Post>(this.postUrl + 'Add', post, httpOptions).subscribe();
+    this.http.post<IPost>(this.postUrl + 'Add', post, httpOptions).subscribe();
   }
-  public EditPost(post: any) {
+  public EditPost(post: any): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    this.http.put<Post>(this.postUrl + 'Edit', post, httpOptions).subscribe();
+    return this.http.put<IPost>(this.postUrl + 'Edit', post, httpOptions);
   }
 }
