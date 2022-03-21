@@ -10,7 +10,7 @@ import { TokenService } from 'src/app/services/TokenService';
   styleUrls: ['./main-feed.component.css'],
 })
 export class MainFeedComponent implements OnInit {
-  public tokenID$ :Observable<any> | undefined;
+  public tokenID$ : number | undefined;
   public userName$ : Observable<any> | undefined;
 
   constructor(private router: Router, private tokenService:TokenService) {}
