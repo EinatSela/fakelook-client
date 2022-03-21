@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./main-feed.component.css'],
 })
 export class MainFeedComponent implements OnInit {
+
   public tokenID$: Observable<any> | undefined;
   public user?: User;
   public userId?: string;

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AngularCesiumModule } from 'angular-cesium';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
 import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-lef
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    AngularCesiumModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
