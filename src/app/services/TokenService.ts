@@ -17,7 +17,7 @@ export class TokenService {
 
   constructor(private http: HttpClient) {}
 
-  getToken(): number | undefined{
+  getToken(): Observable<any>{
     this.token = sessionStorage.getItem('token');
     let httpOptions = {
 
