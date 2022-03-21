@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map, pipe, mergeMap} from 'rxjs';
 import { User } from '../models/user';
 import { TokenService } from './TokenService';
 
@@ -11,23 +11,21 @@ export class UserService {
 
   private getUsrUrl = 'https://localhost:44349/api/Users/ById?id=';
   private user?: User;
-  public userId$?: number;
+  // public userId?: number;
   private tokenservice : TokenService;
 
   constructor(private http: HttpClient) {
     this.tokenservice = new TokenService(http);
    }
 
-  getUser() : Observable<any>{
-    this.tokenservice.getToken().subscribe((res) => {
-      this.userId$ = res;
-    });
-
+  getUser(userId? : string) :Observable <User>{
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'text',
       }),
     };
-    return this.http.get<any>(this.getUsrUrl + this.userId$, httpOptions);
-  }
+    return this.tokenservice.getToken().pipe(
+      mergeMap(res => 
+        this.http.get<any>(this.getUsrUrl + res, httpOptions))
+      )};
 }

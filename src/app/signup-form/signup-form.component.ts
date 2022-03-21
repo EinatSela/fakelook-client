@@ -41,7 +41,7 @@ export class SignupFormComponent implements OnInit {
       this.newUser = {
         FirstName: newFirstname,
         LastName: newLastname,
-        UserName: newUsername,
+        userName: newUsername,
         WorkPlace: newWorkplace,
         Password: newPassword,
         Address: newAddress,

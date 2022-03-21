@@ -1,20 +1,6 @@
 <div class="container">
-  <!-- <app-main-feed-left></app-main-feed-left> -->
-  <div class="left">
-    <div class="Up">
-      <div class="userid">Welcome User {{ userId$ }}</div>
-      <div class="userid">Welcome User {{ user}}</div>
-      <button
-        [routerLink]="['/add-post']"
-        [queryParams]="{
-          id: userId$
-        }"
-      >
-        Add New Post
-      </button>
-      <button>Manage Friends</button>
-    </div>
-    <div class="down"></div>
+  <div *ngIf="userId">
+    <app-main-feed-left [userId]="userId"></app-main-feed-left>
   </div>
   <app-posts></app-posts>
 </div>

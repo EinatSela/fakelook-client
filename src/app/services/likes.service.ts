@@ -10,7 +10,6 @@ export class LikesService {
   private postUrl = 'https://localhost:44349/Likes/';
   constructor(private http: HttpClient) {}
   public getLikesByPostId(id: number): Observable<any[]> {
-    console.log('PostId?id=' + id);
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
