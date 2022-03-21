@@ -7,6 +7,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class TokenService {
+
   private TokentUrl = 'https://localhost:44349/api/Users/GetToken?token=';
   private token?: string | null;
   private getUsrUrl = 'https://localhost:44349/api/Users/ById?id=';
@@ -14,9 +15,10 @@ export class TokenService {
 
   constructor(private http: HttpClient) {}
 
-  getToken(): Observable<any> {
+  getToken(): number | undefined{
     this.token = sessionStorage.getItem('token');
     let httpOptions = {
+
       headers: new HttpHeaders({
         'Content-Type': 'text',
       }),
@@ -27,6 +29,7 @@ export class TokenService {
   setToken(token: string): void {
     sessionStorage.setItem('token', token);
   }
+
 
   getUserName(id: string): Observable<any> | undefined {
     let httpOptions = {
