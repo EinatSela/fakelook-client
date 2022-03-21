@@ -8,6 +8,7 @@ import {
 } from 'angular-cesium';
 import { map, mergeMap, Observable, of } from 'rxjs';
 import { Post } from 'src/app/models/Post';
+import { ConverterService } from 'src/app/services/converter.service';
 import { PostsService } from 'src/app/services/posts.service';
 const randomLocation = require('random-location');
 
@@ -20,7 +21,8 @@ const randomLocation = require('random-location');
 export class MapComponent implements OnInit, AfterViewInit {
   constructor(
     private viewerConf: ViewerConfiguration,
-    private postService: PostsService) {
+    private postService: PostsService,
+    private converterService: ConverterService) {
     viewerConf.viewerOptions = {
       selectionIndicator: false,
       timeline: false,
@@ -51,9 +53,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.entities$ = this.postService.getAllPosts().pipe(
       map((posts) => {
         return posts.map((post) => ({
-          id: post.id,
-          actionType: post.isShow ? ActionType.ADD_UPDATE : ActionType.DELETE,
-          entity: post,
+          id: (post.id + '').toString(),
+          actionType: ActionType.ADD_UPDATE,
+          entity: this.converterService.postToAcEntity(post),
         }));
       }),
       mergeMap((entity) => entity)
