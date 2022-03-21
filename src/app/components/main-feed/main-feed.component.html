@@ -1,7 +1,9 @@
 <div class="container">
+  <!-- <app-main-feed-left></app-main-feed-left> -->
   <div class="left">
     <div class="Up">
       <div class="userid">Welcome User {{ userId$ }}</div>
+      <div class="userid">Welcome User {{ user}}</div>
       <button
         [routerLink]="['/add-post']"
         [queryParams]="{

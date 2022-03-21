@@ -14,6 +14,7 @@ import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
+import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MapComponent } from './components/map/map.component';
     PostComponent,
     EditPostComponent,
     MapComponent,
+    MainFeedLeftComponent,
   ],
   imports: [
     BrowserModule,
