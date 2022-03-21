@@ -5,7 +5,7 @@
     text-align: center;
     margin-bottom: auto;
     background-color: rgb(240, 239, 239);
-    height: 100%;
+    height:inherit;
     margin-top: 1%;
   }
   

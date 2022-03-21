@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SignInService } from 'src/app/services/sign-in.service';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/models/Iuser';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +10,7 @@ import { IUser } from 'src/app/models/Iuser';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
-  user?: IUser;
+  user?: User;
   constructor(private signInService: SignInService, private router: Router) {}
 
   ngOnInit(): void {}

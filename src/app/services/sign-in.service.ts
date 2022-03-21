@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IUser } from '../models/Iuser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TokenService } from './TokenService';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class SignInService {
     this.tokenService = new TokenService(http);
   }
 
-  login(user: IUser): void {
+  login(user: User): void {
     this.subs.push(
       this.http.post<any>(this.userUrl, user).subscribe((res) => {
         this.tokenService.setToken(res.token);
