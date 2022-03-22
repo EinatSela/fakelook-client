@@ -8,6 +8,7 @@ import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupFormComponent },
@@ -18,8 +19,9 @@ const routes: Routes = [
   { path: 'main-feed', component: MainFeedComponent },
   { path: 'post-view', component: PostViewComponent },
   { path: '', component: SignInComponent },
-  { path: 'mao', component: MapComponent },
+  { path: 'map', component: MapComponent },
   { path: '', component: PostsComponent },
+  {path: 'change-password', component : ChangePasswordComponent}
 ];
 
 @NgModule({

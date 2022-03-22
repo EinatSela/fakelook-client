@@ -21,7 +21,8 @@ import { MatCardModule } from '@angular/material/card';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
-import { MatTabsModule } from '@angular/material/tabs';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
     MapComponent,
     PostViewComponent,
     MainFeedLeftComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
