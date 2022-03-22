@@ -1,10 +1,11 @@
 <div class="container">
+  <a class="username">User {{ data.userId }}</a>
+
   <div class="image">
     <img src="{{ data.imageSorce }}" alt="There is no pictuer" />
   </div>
   <div class="text">
     <div>
-      <div class="username">User {{ data.userId }}</div>
       <div class="description">
         {{ data.description }}
       </div>
@@ -12,22 +13,29 @@
   </div>
   <button type="button" (click)="addLike()">
     <i [ngClass]="LikeBtn ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'">{{
-      getActiveLikes()
+      numberOfLikes
     }}</i>
   </button>
-
-  <!-- <a *ngFor="let like of likes$">Like:{{ like.userId }}</a> -->
-  <br />
-  <a>{{ comments$!.length }}</a>
-  <a class="comments" *ngFor="let comment of comments$"
-    >comment:{{ comment.content }}</a
-  >
-  <label>
+  <input
+    type="button"
+    (click)="commentOn()"
+    value=" {{ comments$!.length }} comment"
+  />
+  <div *ngIf="showComments">
+    <a class="comments" *ngFor="let comment of comments$"
+      ><mat-card>{{ comment.content }}</mat-card>
+    </a>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Leave a comment</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. It makes me feel..."
+        [(ngModel)]="content"
+      ></textarea>
+    </mat-form-field>
+    <button mat-button (click)="addComment()">comment</button>
     <br />
-    Add Comment
-    <input type="text" value="" placeholder="content" [(ngModel)]="content" />
-  </label>
-  <button mat-button (click)="addComment()">commit</button>
+  </div>
   <br />
   <button mat-button (click)="onClick()">Close</button>
 </div>

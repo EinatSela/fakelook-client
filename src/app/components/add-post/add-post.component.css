@@ -6,6 +6,9 @@ h1 {
   justify-content: center;
   border: 5px solid cadetblue;
 }
+.error {
+  color: red;
+}
 div {
   align-content: center;
   display: flex;

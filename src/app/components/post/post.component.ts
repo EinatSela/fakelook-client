@@ -17,7 +17,7 @@ import { PostViewComponent } from '../post-view/post-view.component';
 })
 export class PostComponent implements OnInit {
   @Input() post!: Post;
-  public userId$?: number;
+  @Input() userId?: number;
   public likes$?: any[];
   public LikeBtn: boolean = true;
 
@@ -51,7 +51,6 @@ export class PostComponent implements OnInit {
     });
     dialogRefview.afterClosed().subscribe((data) => {});
   }
-  
   update() {
     this.postService.EditPost(this.post).subscribe();
   }

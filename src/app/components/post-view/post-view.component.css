@@ -3,9 +3,6 @@ img {
   height: auto;
   justify-content: center;
 }
-.comments {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid cadetblue;
-  margin: 1px;
+div {
+  text-align: center;
 }

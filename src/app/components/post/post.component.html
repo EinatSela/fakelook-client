@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="post?.userId == userId$" class="edit-button">
-    <button (click)="Edit()">Edit</button>
+  <div *ngIf="post?.userId == userId" class="edit-button">
+    <button (click)="Edit()" mat-stroked-button color="primary">Edit</button>
   </div>
 </div>
