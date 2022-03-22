@@ -14,7 +14,7 @@ export class ConverterService {
     return {
       id : post.id,
       description : post.description,
-      imageSrc : post.imageSorce,
+      imageSorce : post.imageSorce,
       location: new Cesium.Cartesian3(post.x_Position, post.y_Position, post.z_Position)
     };
 
