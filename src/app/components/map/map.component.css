@@ -1,38 +1,5 @@
 .map-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  .menu {
-    position: fixed;
-    left: 0;
-    height: 100vh;
-    width: 15vw;
-    z-index: 1;
-    background-color: aliceblue;
-  }
-  .display-center {
-    justify-content: center;
-    display: flex;
-    padding: 0.5em 0em;
-  }
-  .btn {
-    border-radius: 0.25em;
-    border: 0.2em solid black;
-    cursor: pointer;
-  }
-  .btn-home {
-    background-color: rgb(33, 172, 75);
-  }
-  .btn-random {
-    background-color: rgb(243, 220, 11);
-  }
-  .map-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
+    height: 84vh;
   }
   .map-post {
     width: 5vw;
