@@ -15,10 +15,12 @@ export class TokenService {
     var exp = sessionStorage.getItem('expTime');
     if((exp != null) && (new Date(exp) < new Date()))
     { 
-      let d = new Date();
-      d.setMinutes(d.getMinutes()+15);
-      sessionStorage.setItem('expTime', d.toDateString());
+     
     }
+    let d = new Date();
+    d.setMinutes(d.getMinutes()+15);
+    sessionStorage.setItem('expTime', d.toDateString());
+    
     this.token = sessionStorage.getItem('token');
     let httpOptions = {
     headers: new HttpHeaders({
@@ -32,5 +34,10 @@ export class TokenService {
     d.setMinutes(d.getMinutes()+15);
     sessionStorage.setItem('expTime', d.toDateString());
     sessionStorage.setItem('token', token);
+  }
+
+  deleteToken(){
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('expTime');
   }
 }

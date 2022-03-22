@@ -23,9 +23,13 @@ export class SignInComponent implements OnInit {
   login(NewUserName: string, newPassword: string) {
     this.user = {
       userName: NewUserName,
-      Password: newPassword,
+      password: newPassword,
     };
     //check if login is legal
     this.signInService.login(this.user);
+  }
+
+  goToChangePassword(){
+    this.router.navigate(['/change-password']);
   }
 }

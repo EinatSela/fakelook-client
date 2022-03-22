@@ -43,7 +43,7 @@ export class SignupFormComponent implements OnInit {
         LastName: newLastname,
         userName: newUsername,
         WorkPlace: newWorkplace,
-        Password: newPassword,
+        password: newPassword,
         Address: newAddress,
         Age: newAge,
       };

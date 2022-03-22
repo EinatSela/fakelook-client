@@ -6,5 +6,5 @@ export interface User {
   Address?: string;
   Age?: string;
   WorkPlace?: string;
-  Password: string;
+  password: string;
 }
