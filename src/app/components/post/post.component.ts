@@ -8,6 +8,7 @@ import { TokenService } from 'src/app/services/TokenService';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { PostsService } from 'src/app/services/posts.service';
+import { PostViewComponent } from '../post-view/post-view.component';
 
 @Component({
   selector: 'app-post',
@@ -22,45 +23,35 @@ export class PostComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private postService: PostsService) {}
 
-  ngOnInit(): void {
-    // this.likesService
-    //   .getLikesByPostId(this.post.id)
-    //   .subscribe((res) => (this.likes$ = res));
-    // this.tokenService.getToken().subscribe((res) => {
-    //   this.userId$ = res;
-    // });
-  }
+  ngOnInit(): void {}
   Edit(): void {
     const dialogRef = this.dialog.open(EditPostComponent, {
       width: '350px',
       data: {
         description: this.post.description,
-        img: this.post.imageSorce,
+        imageSorce: this.post.imageSorce,
         id: this.post.id,
       },
     });
     dialogRef.afterClosed().subscribe((data) => {
-      console.log(data);
       this.post.imageSorce = data.imageSorce;
       this.post.description = data.description;
       this.update();
     });
   }
+  OpenFullView() {
+    const dialogRefview = this.dialog.open(PostViewComponent, {
+      width: '350px',
+      data: {
+        description: this.post.description,
+        imageSorce: this.post.imageSorce,
+        postId: this.post.id,
+        userId: this.post.userId,
+      },
+    });
+    dialogRefview.afterClosed().subscribe((data) => {});
+  }
   update() {
     this.postService.EditPost(this.post).subscribe();
   }
-  //     addLike() {
-  //       this.LikeBtn = !this.LikeBtn;
-  //       let like: ILike;
-  //       like = {
-  //         userId: this.userId$!,
-  //         postId: this.post.id,
-  //         isActive: true,
-  //       };
-  //       this.likesService.addLike(like);
-  //       window.location.reload();
-  //       return false;
-  //     }
-  //   }
-  // }
 }

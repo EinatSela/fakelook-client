@@ -4,7 +4,9 @@
 />
 <div class="container">
   <div class="image">
-    <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
+    <button (click)="OpenFullView()">
+      <img src="{{ post?.imageSorce }}" alt="There is no pictuer" />
+    </button>
   </div>
   <div class="text">
     <div>
@@ -18,10 +20,3 @@
     <button (click)="Edit()">Edit</button>
   </div>
 </div>
-<!-- <button type="button" (click)="addLike()"> -->
-<!-- *ngif="LikeBtn" ? :class="fa fa-thumbs-down" -->
-<!-- <i class="fa fa-thumbs-up"></i>
-</button> -->
-<!-- <a>{{ likes$!.length }}</a> -->
-
-<!-- <a *ngFor="let like of likes$">Like:{{ like.userId }}</a> -->

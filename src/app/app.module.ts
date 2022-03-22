@@ -37,6 +37,7 @@ import { PostViewMapComponent } from './components/post-view-map/post-view-map.c
     PostViewComponent,
     MainFeedLeftComponent,
     PostViewMapComponent,
+
   ],
   imports: [
     BrowserModule,

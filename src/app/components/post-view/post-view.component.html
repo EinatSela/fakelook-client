@@ -1,1 +1,33 @@
-<p>post-view works!</p>
+<div class="container">
+  <div class="image">
+    <img src="{{ data.imageSorce }}" alt="There is no pictuer" />
+  </div>
+  <div class="text">
+    <div>
+      <div class="username">User {{ data.userId }}</div>
+      <div class="description">
+        {{ data.description }}
+      </div>
+    </div>
+  </div>
+  <button type="button" (click)="addLike()">
+    <i [ngClass]="LikeBtn ? 'fa fa-thumbs-up' : 'fa fa-thumbs-down'">{{
+      likes$!.length
+    }}</i>
+  </button>
+
+  <!-- <a *ngFor="let like of likes$">Like:{{ like.userId }}</a> -->
+  <br />
+  <a>{{ comments$!.length }}</a>
+  <a class="comments" *ngFor="let comment of comments$"
+    >comment:{{ comment.content }}</a
+  >
+  <label>
+    <br />
+    Add Comment
+    <input type="text" value="" placeholder="content" [(ngModel)]="content" />
+  </label>
+  <button mat-button (click)="addComment()">commit</button>
+  <br />
+  <button mat-button (click)="onClick()">Close</button>
+</div>

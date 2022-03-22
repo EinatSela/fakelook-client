@@ -1,0 +1,11 @@
+img {
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+.comments {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid cadetblue;
+  margin: 1px;
+}
