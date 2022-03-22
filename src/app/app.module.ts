@@ -15,10 +15,12 @@ import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { PostComponent } from './components/post/post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { MapComponent } from './components/map/map.component';
+import { PostViewComponent } from './components/post-view/post-view.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
-import { MatTabsModule } from '@angular/material/tabs';
-import { PostViewComponent } from './components/post-view/post-view.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { PostViewMapComponent } from './components/post-view-map/post-view-map.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { PostViewComponent } from './components/post-view/post-view.component';
     MapComponent,
     PostViewComponent,
     MainFeedLeftComponent,
+    PostViewMapComponent,
+
   ],
   imports: [
     BrowserModule,

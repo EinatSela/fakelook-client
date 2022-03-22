@@ -5,7 +5,8 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { IPost } from 'src/app/models/IPost';
+import { Post } from 'src/app/models/Post';
+import { PostsService } from 'src/app/services/posts.service';
 
 export interface PostData {
   description: string;
@@ -18,7 +19,7 @@ export interface PostData {
   styleUrls: ['./edit-post.component.css'],
 })
 export class EditPostComponent {
-  afterEdit?: Observable<IPost>;
+  afterEdit?: Observable<Post>;
   constructor(
     public dialogRef: MatDialogRef<EditPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PostData

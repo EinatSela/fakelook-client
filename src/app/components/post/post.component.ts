@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ILike } from 'src/app/models/Ilike';
-import { IPost } from 'src/app/models/IPost';
+import { Like } from 'src/app/models/like';
+import { Post } from 'src/app/models/Post';
 import { LikesService } from 'src/app/services/likes.service';
 import { TokenService } from 'src/app/services/TokenService';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { PostViewComponent } from '../post-view/post-view.component';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  @Input() post!: IPost;
+  @Input() post!: Post;
   public userId$?: number;
   public likes$?: any[];
   public LikeBtn: boolean = true;

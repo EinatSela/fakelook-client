@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TokenService } from './TokenService';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',

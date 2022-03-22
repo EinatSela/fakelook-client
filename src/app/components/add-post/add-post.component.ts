@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IPost } from 'src/app/models/IPost';
+import { Post } from 'src/app/models/Post';
 import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class AddPostComponent implements OnInit {
     this.getLocation();
   }
   createPost() {
-    let newPost: IPost;
+    let newPost: Post;
     newPost = {
       description: this.description,
       imageSorce: this.imageSorce,

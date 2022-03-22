@@ -6,7 +6,10 @@ import {
   ActionType,
   CameraService,
 } from 'angular-cesium';
-import { Observable, of } from 'rxjs';
+import { map, mergeMap, Observable, of } from 'rxjs';
+import { Post } from 'src/app/models/Post';
+import { ConverterService } from 'src/app/services/converter.service';
+import { PostsService } from 'src/app/services/posts.service';
 const randomLocation = require('random-location');
 
 @Component({
@@ -16,7 +19,10 @@ const randomLocation = require('random-location');
   providers: [ViewerConfiguration],
 })
 export class MapComponent implements OnInit, AfterViewInit {
-  constructor(private viewerConf: ViewerConfiguration) {
+  constructor(
+    private viewerConf: ViewerConfiguration,
+    private postService: PostsService,
+    private converterService: ConverterService) {
     viewerConf.viewerOptions = {
       selectionIndicator: false,
       timeline: false,
@@ -31,15 +37,31 @@ export class MapComponent implements OnInit, AfterViewInit {
       useDefaultRenderLoop: true,
     };
   }
+
   @ViewChild('map') map!: AcMapComponent;
   entities$!: Observable<AcNotification>;
+  selectedPost!: Post;
+  showDialog = false;
   private camera!: CameraService;
   Cesium = Cesium;
+
   ngAfterViewInit(): void {
     this.camera = this.map.getCameraService();
   }
+
   ngOnInit(): void {
+    this.entities$ = this.postService.getAllPosts().pipe(
+      map((posts) => {
+        return posts.map((post) => ({
+          id: (post.id + '').toString(),
+          actionType: ActionType.ADD_UPDATE,
+          entity: this.converterService.postToAcEntity(post),
+        }));
+      }),
+      mergeMap((entity) => entity)
+    );
   }
+
   goHome(): void {
     navigator.geolocation.getCurrentPosition(
       (data) => {
@@ -62,6 +84,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       { enableHighAccuracy: true, timeout: 10000 }
     );
   }
+
   goRandom(): void {
     const randomStart = {
       latitude: 37.7768006 * Math.random(),
@@ -72,12 +95,12 @@ export class MapComponent implements OnInit, AfterViewInit {
       randomStart,
       radius
     );
-
     this.zoomToLocation(
       Cesium.Cartesian3.fromDegrees(longitude, latitude),
       100000
     );
   }
+
   private zoomToLocation(position: any, zoom: number): void {
     this.camera.cameraFlyTo({
       destination: position,
@@ -85,5 +108,14 @@ export class MapComponent implements OnInit, AfterViewInit {
         this.camera.zoomOut(zoom);
       },
     });
+  }
+
+  showFullPost(post: Post): void {
+    this.showDialog = true;
+    this.selectedPost = post;
+  }
+  
+  closeDialog(): void {
+    this.showDialog = false;
   }
 }

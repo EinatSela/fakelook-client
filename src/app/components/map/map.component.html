@@ -4,21 +4,20 @@
       acFor="let entity of entities$"
       [context]="this"
       [debug]="true">
-      <ac-billboard-desc
-        props="{ position: entity.position,
-                              image : 'https://preview.ibb.co/cpDuwF/angular_cesium.png',
-                              scale: 0.05,
-                                                          }"
-        >>
-      </ac-billboard-desc>
-      <ac-label-desc
-        props="{
-          position: entity.position,
-          text: entity.id,
-           pixelOffset : [-15,20] | pixelOffset
-        }"
-      >
-      </ac-label-desc>
+      <ac-html-desc props="{position: entity.location, show: true}">
+        <ng-template let-entity>
+          <div class="map-post" (click)="showFullPost(entity)">
+            <div>
+              <img src="{{ entity.imageSorce }}" />
+            </div>
+            <div class="post-description">{{ entity.description }}</div>
+          </div>
+        </ng-template>
+      </ac-html-desc>
     </ac-layer>
   </ac-map>
+  <app-post-view-map *ngIf="showDialog"
+  [posts]="selectedPost"
+  (closeDialogEmitter)="closeDialog()">
+  </app-post-view-map>
   
