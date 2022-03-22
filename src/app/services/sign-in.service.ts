@@ -11,10 +11,8 @@ import { User } from '../models/user';
 export class SignInService {
   private userUrl = 'https://localhost:44349/api/Users/Login';
   subs: Subscription[] = [];
-  private tokenService: TokenService;
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.tokenService = new TokenService(http);
+  constructor(private http: HttpClient, private router: Router, private tokenService:TokenService) {
   }
 
   login(user: User): void {

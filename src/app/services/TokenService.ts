@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,13 +10,14 @@ export class TokenService {
   private TokentUrl = 'https://localhost:44349/api/Users/GetToken?token=';
   private token?: string | null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router: Router) {}
 
   getToken(): Observable<any> {
     var exp = sessionStorage.getItem('expTime');
     if((exp != null) && (new Date(exp) < new Date()))
     { 
-     
+      this.deleteToken();
+     this.router.navigateByUrl('')
     }
     let d = new Date();
     d.setMinutes(d.getMinutes()+15);
