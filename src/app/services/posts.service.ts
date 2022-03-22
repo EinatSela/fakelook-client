@@ -18,6 +18,7 @@ export class PostsService {
     };
     return this.http.get<Post[]>(this.postUrl + 'All', httpOptions);
   }
+
   public newPost(post: Post) {
     let httpOptions = {
       headers: new HttpHeaders({
@@ -26,6 +27,7 @@ export class PostsService {
     };
     this.http.post<Post>(this.postUrl + 'Add', post, httpOptions).subscribe();
   }
+  
   public EditPost(post: any): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
