@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ILike } from 'src/app/models/Ilike';
+import { Like } from 'src/app/models/like';
 import { CommentsService } from 'src/app/services/comments.service';
 import { LikesService } from 'src/app/services/likes.service';
 import { TokenService } from 'src/app/services/TokenService';
@@ -46,7 +46,7 @@ export class PostViewComponent implements OnInit {
     this.dialogRef.close();
   }
   addLike() {
-    let like: ILike;
+    let like: Like;
     like = {
       userId: this.userId$!,
       postId: this.data.postId,
