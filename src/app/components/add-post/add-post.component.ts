@@ -10,6 +10,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class AddPostComponent implements OnInit {
   id: string | null = '';
+  ErrorMsg: boolean = false;
   description: string = '';
   imageSorce: string = '';
   date: Date;
@@ -34,6 +35,10 @@ export class AddPostComponent implements OnInit {
   }
   createPost() {
     let newPost: Post;
+    if (this.imageSorce == '') {
+      this.ErrorMsg = true;
+      return;
+    }
     newPost = {
       description: this.description,
       imageSorce: this.imageSorce,
@@ -45,7 +50,7 @@ export class AddPostComponent implements OnInit {
     };
     this.postService.newPost(newPost);
     this.router.navigate(['main-feed']).then(() => {
-      window.location.reload();
+      //window.location.reload();
     });
   }
   public getLocation(): void {

@@ -5,5 +5,10 @@
   <p>Update imageSorce</p>
   <input matInput [(ngModel)]="data.imageSorce" />
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Update</button>
+  <a *ngIf="data.imageSorce.length > 0">
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Update</button>
+  </a>
+  <div class="error" *ngIf="data.imageSorce.length < 1">
+    Please Insert Image Source And Try Again
+  </div>
 </div>

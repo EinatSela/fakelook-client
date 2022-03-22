@@ -24,4 +24,7 @@
     </label>
   </div>
   <button (click)="createPost()">Submit</button>
+  <div class="error" *ngIf="ErrorMsg">
+    Please Insert Image Source And Try Again
+  </div>
 </div>
