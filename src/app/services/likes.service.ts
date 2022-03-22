@@ -28,4 +28,14 @@ export class LikesService {
       .post<Like>(this.postUrl + 'Add', like, httpOptions)
       .subscribe((res) => {});
   }
+  public EditLike(like: Like) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    this.http
+      .put<Like>(this.postUrl + 'Edit', like, httpOptions)
+      .subscribe((res) => {});
+  }
 }

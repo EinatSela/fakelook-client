@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="edit-button">
+  <div *ngIf="post?.userId == userId$" class="edit-button">
     <button (click)="Edit()">Edit</button>
   </div>
 </div>
