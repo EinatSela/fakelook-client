@@ -93,3 +93,10 @@ input:focus {
     background-color: #4d1f38;
     color: white;
   }
+
+  .error{
+    color: red;
+    font-size: larger;
+    font-weight: 600;
+    
+  }

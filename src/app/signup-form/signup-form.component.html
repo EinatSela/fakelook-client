@@ -56,5 +56,12 @@
         Sign-Up
       </button>
     </div>
+    <div class="error" *ngIf="ValErrorMsg">
+      Please fill all fields
+    </div>
+    <div class="error" *ngIf="PassErrorMsg">
+      Confirm password must be identical to password
+    </div>
   </form>
+
 </div>
