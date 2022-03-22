@@ -17,11 +17,15 @@ export interface PostData {
   styleUrls: ['./post-view.component.css'],
 })
 export class PostViewComponent implements OnInit {
-  public userId$: any;
+  public userId?: number;
+  public LikeOn: boolean = false;
+  public numberOfLikes: number = 0;
   public likes$?: any[];
   public comments$?: any[];
   public content: string = '';
   public LikeBtn: boolean = true;
+  public showComments: boolean = false;
+
   constructor(
     private likesService: LikesService,
     private commentsServise: CommentsService,
@@ -38,41 +42,51 @@ export class PostViewComponent implements OnInit {
       .getCommentByPostId(this.data.postId)
       .subscribe((res) => (this.comments$ = res));
     this.tokenService.getToken().subscribe((res) => {
-      this.userId$ = res;
+      this.userId = res;
     });
   }
   initLike() {
-    this.LikeBtn = this.likes$!.some((e) => e.userId === this.userId$);
+    this.LikeOn = this.likes$!.some((e) => e.userId === this.userId);
+    this.numberOfLikes = this.likes$!.filter((e) => e.isActive).length;
   }
   onClick(): void {
     this.dialogRef.close();
   }
+  commentOn() {
+    this.showComments = !this.showComments;
+  }
   addLike() {
-    if (this.LikeBtn) {
-      let like1: Like;
-      like1 = this.likes$!.find((e) => e.userId === this.userId$);
-      this.likes$;
-      this.likesService.EditLike(like1);
+    this.LikeBtn = !this.LikeBtn;
+    if (this.LikeOn) {
+      this.numberOfLikes!--;
+      this.LikeOn = !this.LikeOn;
     } else {
-      let like: Like;
-      like = {
-        userId: this.userId$!,
-        postId: this.data.postId,
-        isActive: true,
-      };
-      this.likesService.addLike(like);
-      this.likes$?.push(like);
+      this.numberOfLikes!++;
+      this.LikeOn = !this.LikeOn;
     }
   }
-  getActiveLikes(): number {
-    var res = this.likes$!.filter((e) => e.isActive).length;
-    return res;
-  }
+  // addLike() {
+  //   if (this.LikeBtn) {
+  //     let like1: Like;
+  //     like1 = this.likes$!.find((e) => e.userId === this.userId);
+  //     this.likes$;
+  //     this.likesService.EditLike(like1);
+  //   } else {
+  //     let like: Like;
+  //     like = {
+  //       userId: this.userId!,
+  //       postId: this.data.postId,
+  //       isActive: true,
+  //     };
+  //     this.likesService.addLike(like);
+  //     this.likes$?.push(like);
+  //   }
+  // }
   addComment() {
     let comment: Comment;
     comment = {
       content: this.content,
-      userId: Number(this.userId$!),
+      userId: this.userId!,
       postId: this.data.postId,
     };
     this.commentsServise.addComment(comment);

@@ -10,6 +10,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class PostsComponent implements OnInit {
   public posts$: Observable<Post[]> | undefined;
+  @Input() userId?: number;
 
   constructor(private postsService: PostsService) {}
 
