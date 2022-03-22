@@ -19,7 +19,6 @@ import { PostViewComponent } from './components/post-view/post-view.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import { PostViewMapComponent } from './components/post-view-map/post-view-map.component';
 
 
 @NgModule({
@@ -36,8 +35,6 @@ import { PostViewMapComponent } from './components/post-view-map/post-view-map.c
     MapComponent,
     PostViewComponent,
     MainFeedLeftComponent,
-    PostViewMapComponent,
-
   ],
   imports: [
     BrowserModule,

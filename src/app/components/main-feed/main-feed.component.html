@@ -1,6 +1,6 @@
 <div class="container">
-  <div *ngIf="userId">
-    <app-main-feed-left [userId]="userId"></app-main-feed-left>
+  <div *ngIf="user">
+    <app-main-feed-left [userId]="user.id" [userName] = "user.userName"></app-main-feed-left>
   </div>
   <div class="feed">
     <mat-tab-group mat-align-tabs="end">
@@ -12,5 +12,4 @@
       </mat-tab>
     </mat-tab-group>
   </div>
-
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import {
   AcMapComponent,
   AcNotification,
@@ -10,6 +11,7 @@ import { map, mergeMap, Observable, of } from 'rxjs';
 import { Post } from 'src/app/models/Post';
 import { ConverterService } from 'src/app/services/converter.service';
 import { PostsService } from 'src/app/services/posts.service';
+import { PostViewComponent } from '../post-view/post-view.component';
 const randomLocation = require('random-location');
 
 @Component({
@@ -22,7 +24,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   constructor(
     private viewerConf: ViewerConfiguration,
     private postService: PostsService,
-    private converterService: ConverterService) {
+    private converterService: ConverterService,
+    public dialog: MatDialog,) {
     viewerConf.viewerOptions = {
       selectionIndicator: false,
       timeline: false,
@@ -110,12 +113,17 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  showFullPost(post: Post): void {
-    this.showDialog = true;
-    this.selectedPost = post;
+  showFullPost(post: Post) {
+    const dialogRefview = this.dialog.open(PostViewComponent, {
+      width: '350px',
+      data: {
+        description: post.description,
+        imageSorce: post.imageSorce,
+        postId: post.id,
+        userId: post.userId,
+      },
+    });
+    dialogRefview.afterClosed().subscribe((data) => {});
   }
-  
-  closeDialog(): void {
-    this.showDialog = false;
-  }
+
 }

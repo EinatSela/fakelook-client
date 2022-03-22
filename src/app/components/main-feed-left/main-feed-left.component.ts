@@ -9,19 +9,20 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./main-feed-left.component.css']
 })
 export class MainFeedLeftComponent implements OnInit {
-  @Input() userId?: string;
-  public userName? : string;
-  public user? : User;
+  @Input() userId?: number | undefined;
+  @Input() userName? : string;
+  // public user? : User;
 
   constructor(
     private userService: UserService, 
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-   this.userService.getUser().subscribe((res) => {
-      this.user = res;
-      console.log(this.user);
-    });
+
+  }
+
+  logout(){
+    
   }
 
 }
