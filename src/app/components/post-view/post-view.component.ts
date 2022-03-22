@@ -36,25 +36,37 @@ export class PostViewComponent implements OnInit {
       .subscribe((res) => (this.likes$ = res));
     this.commentsServise
       .getCommentByPostId(this.data.postId)
-      .subscribe((res) => ((this.comments$ = res), console.log(res)));
+      .subscribe((res) => (this.comments$ = res));
     this.tokenService.getToken().subscribe((res) => {
       this.userId$ = res;
     });
   }
-
+  initLike() {
+    this.LikeBtn = this.likes$!.some((e) => e.userId === this.userId$);
+  }
   onClick(): void {
     this.dialogRef.close();
   }
   addLike() {
-    let like: Like;
-    like = {
-      userId: this.userId$!,
-      postId: this.data.postId,
-      isActive: true,
-    };
-    this.likesService.addLike(like);
-    this.likes$?.push(like);
-    this.LikeBtn = !this.LikeBtn;
+    if (this.LikeBtn) {
+      let like1: Like;
+      like1 = this.likes$!.find((e) => e.userId === this.userId$);
+      this.likes$;
+      this.likesService.EditLike(like1);
+    } else {
+      let like: Like;
+      like = {
+        userId: this.userId$!,
+        postId: this.data.postId,
+        isActive: true,
+      };
+      this.likesService.addLike(like);
+      this.likes$?.push(like);
+    }
+  }
+  getActiveLikes(): number {
+    var res = this.likes$!.filter((e) => e.isActive).length;
+    return res;
   }
   addComment() {
     let comment: Comment;
