@@ -51,6 +51,7 @@ export class PostComponent implements OnInit {
     });
     dialogRefview.afterClosed().subscribe((data) => {});
   }
+  
   update() {
     this.postService.EditPost(this.post).subscribe();
   }

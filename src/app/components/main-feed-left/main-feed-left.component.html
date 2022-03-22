@@ -1,17 +1,20 @@
 <div class="left">
     <div class="Up">
-      <!-- <div class="userid">Welcome User {{ userId }}</div> -->
-        <div *ngIf="user" class="userid">Welcome {{ user.userName }}!</div>
-
-      <button
-        [routerLink]="['/add-post']"
-        [queryParams]="{
-          id: userId
-        }"
-      >
-        Add New Post
-      </button>
-      <button>Manage Friends</button>
+      <div class="user">
+        <div *ngIf="userName" class="userid">Welcome {{ userName }}!</div>
+        <button (click)="logout()">Logout</button>
+      </div>
+      <div>
+          <button
+          [routerLink]="['/add-post']"
+          [queryParams]="{
+            id: userId
+          }"
+        >
+          Add New Post
+        </button>
+        <button>Manage Friends</button>
+      </div>
     </div>
     <div class="down"></div>
   </div>
