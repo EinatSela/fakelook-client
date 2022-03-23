@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, pipe, mergeMap } from 'rxjs';
+import { Observable, map, pipe, mergeMap, of } from 'rxjs';
 import { User } from '../models/user';
 import { TokenService } from './TokenService';
 
@@ -17,7 +17,8 @@ export class UserService {
   public dict: any[] = [];
   // public userId?: number;
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {
+  constructor(private http: HttpClient, 
+    private tokenService: TokenService,) {
     this.getUserDict();
   }
 

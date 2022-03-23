@@ -22,13 +22,11 @@
       <div class="Tags-input">
         <input type="text" #tags />
       </div>
-      <div class="tagged headline">Tagged Users:</div>
-      <div class="tagged-input">
-        <input type="text" #tagged />
-      </div>
     </div>
     <div class="button">
-      <button (click)="filter()">Search</button>
+      <button mat-fab color="basic" (click)="filter()">
+        <mat-icon>search</mat-icon>
+      </button>
     </div>
   </form>
 </div>

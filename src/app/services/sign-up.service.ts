@@ -15,7 +15,6 @@ export class SignUpService {
   constructor(private http: HttpClient, private router: Router) {}
 
   public addUser(newUser: User) {
-    console.log('adding user');
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
