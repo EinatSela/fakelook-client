@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class FilterComponent implements OnInit {
   public minDate?: Date;
   public maxDate?: Date;
-  public publisherName;
+  public publisherName: string;
   public publisherId: null | number[] = null;
   @Output() updatePosts = new EventEmitter<Post[]>();
 
@@ -28,7 +28,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {}
   filter() {
-    //this.initPublishId();
+    this.initPublishId();
     let query: Query;
     query = {
       minDate: this.minDate,
@@ -39,17 +39,25 @@ export class FilterComponent implements OnInit {
       .FilterPost(query)
       .subscribe((res) => this.updatePosts.emit(res));
   }
-  // initPublishId() {
-  //   console.log(this.userService.dict);
-  //   debugger;
-  //   if (this.publisherName?.length > 0) {
-  //     //this.publisherId?.push(
-  //     console.log(
-  //       Object.keys(this.userService.dict).find(
-  //         (e) => this.userService.dict[e] == this.publisherName
-  //       )
-  //     );
-  //   }
-  //   console.log(this.publisherId);
-  // }
+  initPublishId() {
+    let arr = this.publisherName.split(',');
+    console.log(this.publisherName);
+    if (this.publisherName?.length > 0) {
+      let res = this.getIdByUserName(this.publisherName);
+      //this.publisherId?.push(parseInt(res));
+    }
+    console.log(this.publisherId);
+  }
+  getIdByUserName(value: string) {
+    let ids = Object.keys(this.userService.dict);
+    if (ids) {
+      for (let index = 0; index < ids.length; index++) {
+        const id = ids[index];
+        if (this.userService.dict[parseInt(id)] == value) {
+          return id;
+        }
+      }
+    }
+    return -1;
+  }
 }
