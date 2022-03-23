@@ -5,6 +5,7 @@ import { CommentsService } from 'src/app/services/comments.service';
 import { LikesService } from 'src/app/services/likes.service';
 import { TokenService } from 'src/app/services/TokenService';
 import { Comment } from 'src/app/models/comment';
+import { ThisReceiver } from '@angular/compiler';
 export interface PostData {
   description: string;
   imageSorce: string;
@@ -26,7 +27,6 @@ export class PostViewComponent implements OnInit {
   public LikeStatus: boolean = false;
   public LikeBegin: boolean = false;
   public showComments: boolean = false;
-
   constructor(
     private likesService: LikesService,
     private commentsServise: CommentsService,
@@ -36,35 +36,44 @@ export class PostViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.tokenService.getToken().subscribe((res) => {
+      this.userId = res;
+    });
     this.likesService
       .getLikesByPostId(this.data.postId)
       .subscribe((res) => ((this.likes$ = res), this.initLike()));
     this.commentsServise
       .getCommentByPostId(this.data.postId)
       .subscribe((res) => (this.comments$ = res));
-    this.tokenService.getToken().subscribe((res) => {
-      this.userId = res;
-    });
   }
   initLike() {
+    //if he liked it post
     this.LikeStatus = this.likes$!.some(
       (e) => e.userId === this.userId && e.isActive
     );
     this.LikeBegin = this.LikeStatus;
-    console.log(this.LikeBegin);
-    this.numberOfLikes = this.likes$!.length;
-    console.log(this.numberOfLikes);
+    this.numberOfLikes = this.likes$!.filter((e) => e.isActive).length;
   }
   onClick(): void {
+    //check if need to do something
+    let like1: Like;
     if (this.LikeStatus != this.LikeBegin) {
-      let like1: Like;
-      if (this.LikeBegin) {
+      //check if in the list
+      if (
+        (this.LikeStatus = this.likes$!.some((e) => e.userId === this.userId))
+      ) {
         like1 = this.likes$!.find((e) => e.userId === this.userId);
+        if (this.LikeBegin) {
+          like1.isActive = false;
+        } else {
+          like1.isActive = true;
+        }
         this.likesService.EditLike(like1);
       } else {
         like1 = {
           userId: this.userId!,
           postId: this.data.postId,
+          isActive: true,
         };
         this.likesService.addLike(like1);
       }
@@ -73,7 +82,6 @@ export class PostViewComponent implements OnInit {
   }
 
   changeBtn() {
-    this.LikeBtn = !this.LikeBtn;
     if (this.LikeStatus) {
       this.numberOfLikes!--;
       this.LikeStatus = !this.LikeStatus;
@@ -82,23 +90,7 @@ export class PostViewComponent implements OnInit {
       this.LikeStatus = !this.LikeStatus;
     }
   }
-  // addLike() {
-  //   if (this.LikeBtn) {
-  //     let like1: Like;
-  //     like1 = this.likes$!.find((e) => e.userId === this.userId);
-  //     this.likes$;
-  //     this.likesService.EditLike(like1);
-  //   } else {
-  //     let like: Like;
-  //     like = {
-  //       userId: this.userId!,
-  //       postId: this.data.postId,
-  //       isActive: true,
-  //     };
-  //     this.likesService.addLike(like);
-  //     this.likes$?.push(like);
-  //   }
-  // }
+
   addComment() {
     let comment: Comment;
     comment = {

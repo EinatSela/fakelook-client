@@ -67,8 +67,9 @@ export class AddPostComponent implements OnInit {
 
   public updatePosition() {
     var R = 6371;
-    this.x_Position = R * Math.cos(this.latitude) * Math.cos(this.longitude);
-    this.y_Position = R * Math.cos(this.latitude) * Math.sin(this.longitude);
-    this.z_Position = R * Math.sin(this.latitude);
+    var position = Cesium.Cartesian3.fromDegrees(this.longitude, this.latitude);
+    this.x_Position = position.x;
+    this.y_Position = position.y;
+    this.z_Position = position.z;
   }
 }
