@@ -1,21 +1,21 @@
 <div class="left">
-    <div class="Up">
-      <div class="user">
-        <div *ngIf="userName" class="userid">Welcome {{ userName }}!</div>
-        <button (click)="logout()">Logout</button>
-      </div>
-      <div>
-          <button
-          [routerLink]="['/add-post']"
-          [queryParams]="{
-            id: userId
-          }"
-        >
-          Add New Post
-        </button>
-        <button>Manage Friends</button>
-      </div>
+  <div class="Up">
+    <div class="user">
+      <div *ngIf="userName" class="userid">Welcome {{ userName }}!</div>
+      <button (click)="logout()">Logout</button>
     </div>
-    <div class="down"></div>
-    <app-filter></app-filter>
+    <div>
+      <button
+        [routerLink]="['/add-post']"
+        [queryParams]="{
+          id: userId
+        }"
+      >
+        Add New Post
+      </button>
+      <button>Manage Friends</button>
+    </div>
   </div>
+  <div class="down"></div>
+  <app-filter (updatePosts)="filter($event)"></app-filter>
+</div>

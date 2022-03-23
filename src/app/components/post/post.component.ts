@@ -9,6 +9,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { PostsService } from 'src/app/services/posts.service';
 import { PostViewComponent } from '../post-view/post-view.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post',
@@ -18,12 +19,19 @@ import { PostViewComponent } from '../post-view/post-view.component';
 export class PostComponent implements OnInit {
   @Input() post!: Post;
   @Input() userId?: number;
+  public userName: string = '';
   public likes$?: any[];
   public LikeBtn: boolean = true;
 
-  constructor(public dialog: MatDialog, private postService: PostsService) {}
+  constructor(
+    public dialog: MatDialog,
+    private postService: PostsService,
+    private userService: UserService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userName = this.userService.dict[this.post.userId];
+  }
   Edit(): void {
     const dialogRef = this.dialog.open(EditPostComponent, {
       width: '350px',

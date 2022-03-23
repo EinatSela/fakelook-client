@@ -9,12 +9,10 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  public posts$: Observable<Post[]> | undefined;
+  @Input() posts: Post[] | undefined;
   @Input() userId?: number;
 
-  constructor(private postsService: PostsService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.posts$ = this.postsService.getAllPosts();
-  }
+  ngOnInit(): void {}
 }
