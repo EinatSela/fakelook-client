@@ -2,18 +2,20 @@
   display: grid;
   grid-template-columns: 50% 25% 25%;
   
-  border: 1px solid black;
+  border-bottom: 0.25px solid rgb(177, 177, 177);
   border-width: 1px 0px 1px 0px;
   padding: 1%;
   margin: 0;
+  height:30vh
 }
 .container:hover{
   background-color: rgb(245, 245, 245);
 }
 
 img {
-  width: 100%;
-  height: auto;
+  object-fit: cover;
+  height: 30vh;
+  width: 30vw;
   justify-content: center;
 }
 .image{
@@ -43,3 +45,7 @@ img {
   font-size: small;
 }
 
+.image button{
+  border: 0;
+  background-color: transparent;
+}
