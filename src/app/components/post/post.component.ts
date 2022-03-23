@@ -28,7 +28,7 @@ export class PostComponent implements OnInit {
     public dialog: MatDialog,
     private postService: PostsService,
     private userService: UserService,
-    private tagService : TagService
+    private tagService : TagsService
   ) {}
 
   ngOnInit(): void {
