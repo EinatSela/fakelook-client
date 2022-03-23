@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  Input,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {
   AcMapComponent,
@@ -21,11 +27,14 @@ const randomLocation = require('random-location');
   providers: [ViewerConfiguration],
 })
 export class MapComponent implements OnInit, AfterViewInit {
+  @Input() posts: Post[] | undefined;
+
   constructor(
     private viewerConf: ViewerConfiguration,
     private postService: PostsService,
     private converterService: ConverterService,
-    public dialog: MatDialog,) {
+    public dialog: MatDialog
+  ) {
     viewerConf.viewerOptions = {
       selectionIndicator: false,
       timeline: false,
@@ -125,5 +134,4 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
     dialogRefview.afterClosed().subscribe((data) => {});
   }
-
 }
