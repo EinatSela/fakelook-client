@@ -33,9 +33,6 @@ export class MainFeedComponent implements OnInit {
     this.postsService.getAllPosts().subscribe((res) => (this.posts$ = res));
   }
   filter(posts: Post[]) {
-    console.log('yael');
-
-    console.log(posts);
     this.posts$ = posts;
   }
 }

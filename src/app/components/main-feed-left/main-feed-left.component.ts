@@ -22,7 +22,6 @@ export class MainFeedLeftComponent implements OnInit {
   ngOnInit(): void {}
   filter(posts: Post[]) {
     this.posts$ = posts;
-    console.log(this.posts$);
     this.updatePosts.emit(posts);
   }
   logout() {
