@@ -9,6 +9,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { PostsService } from 'src/app/services/posts.service';
 import { PostViewComponent } from '../post-view/post-view.component';
+import { TagsService } from 'src/app/services/tags.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class PostComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private postService: PostsService,
-    private userService: UserService
+    private userService: UserService,
+    private tagService : TagService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,8 @@ export class PostComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       this.post.imageSorce = data.imageSorce;
       this.post.description = data.description;
+      this.post.tags = this.tagService.createTags(data.description),
+
       this.update();
     });
   }
@@ -64,10 +68,13 @@ export class PostComponent implements OnInit {
     });
   }
   update() {
+    console.log(this.post);
     this.postService.EditPost(this.post).subscribe();
   }
 
   addLike() {
     throw new Error('Function not implemented.');
   }
+
+  
 }
