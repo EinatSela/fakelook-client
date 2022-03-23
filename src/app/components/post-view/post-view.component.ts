@@ -6,6 +6,7 @@ import { LikesService } from 'src/app/services/likes.service';
 import { TokenService } from 'src/app/services/TokenService';
 import { Comment } from 'src/app/models/comment';
 import { ThisReceiver } from '@angular/compiler';
+import { TagsService } from 'src/app/services/tags.service';
 export interface PostData {
   description: string;
   imageSorce: string;
@@ -32,6 +33,7 @@ export class PostViewComponent implements OnInit {
     private commentsServise: CommentsService,
     private tokenService: TokenService,
     public dialogRef: MatDialogRef<PostViewComponent>,
+    private tagService : TagsService,
     @Inject(MAT_DIALOG_DATA) public data: PostData
   ) {}
 
@@ -97,6 +99,7 @@ export class PostViewComponent implements OnInit {
       content: this.content,
       userId: this.userId!,
       postId: this.data.postId,
+      tags : this.tagService.createTags(this.content),
     };
     this.commentsServise.addComment(comment);
     this.comments$?.push(comment);

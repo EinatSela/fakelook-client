@@ -1,3 +1,5 @@
+import { Tag } from "./tag";
+
 export interface Post {
   id?: number;
   description: string;
@@ -7,4 +9,5 @@ export interface Post {
   z_Position: number;
   date: Date;
   userId: number;
+  tags?:Tag[];
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/models/Post';
 import { PostsService } from 'src/app/services/posts.service';
+import { TagsService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-add-post',
@@ -24,7 +25,8 @@ export class AddPostComponent implements OnInit {
   constructor(
     private postService: PostsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tagService : TagsService
   ) {
     this.date = new Date();
   }
@@ -47,6 +49,7 @@ export class AddPostComponent implements OnInit {
       y_Position: this.y_Position,
       z_Position: this.z_Position,
       userId: Number(this.id),
+      tags : this.tagService.createTags(this.description),
     };
     this.postService.newPost(newPost);
     this.router.navigate(['main-feed']).then(() => {
