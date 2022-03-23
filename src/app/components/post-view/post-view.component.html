@@ -11,8 +11,8 @@
       </div>
     </div>
   </div>
-  <button type="button" (click)="addLike()">
-    <i [ngClass]="LikeBtn ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'">{{
+  <button type="button" (click)="changeBtn()">
+    <i [ngClass]="LikeStatus ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'">{{
       numberOfLikes
     }}</i>
   </button>

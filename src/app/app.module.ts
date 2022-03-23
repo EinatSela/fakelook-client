@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { PostsComponent } from './components/posts/posts.component';
@@ -21,7 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MainFeedLeftComponent } from './components/main-feed-left/main-feed-left.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -44,6 +46,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatIconModule,
     MatCardModule,
     BrowserAnimationsModule,
     HttpClientModule,

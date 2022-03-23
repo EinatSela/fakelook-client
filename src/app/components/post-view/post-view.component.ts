@@ -18,12 +18,13 @@ export interface PostData {
 })
 export class PostViewComponent implements OnInit {
   public userId?: number;
-  public LikeOn: boolean = false;
   public numberOfLikes: number = 0;
   public likes$?: any[];
   public comments$?: any[];
   public content: string = '';
   public LikeBtn: boolean = true;
+  public LikeStatus: boolean = false;
+  public LikeBegin: boolean = false;
   public showComments: boolean = false;
 
   constructor(
@@ -37,7 +38,7 @@ export class PostViewComponent implements OnInit {
   ngOnInit(): void {
     this.likesService
       .getLikesByPostId(this.data.postId)
-      .subscribe((res) => (this.likes$ = res));
+      .subscribe((res) => ((this.likes$ = res), this.initLike()));
     this.commentsServise
       .getCommentByPostId(this.data.postId)
       .subscribe((res) => (this.comments$ = res));
@@ -46,23 +47,39 @@ export class PostViewComponent implements OnInit {
     });
   }
   initLike() {
-    this.LikeOn = this.likes$!.some((e) => e.userId === this.userId);
-    this.numberOfLikes = this.likes$!.filter((e) => e.isActive).length;
+    this.LikeStatus = this.likes$!.some(
+      (e) => e.userId === this.userId && e.isActive
+    );
+    this.LikeBegin = this.LikeStatus;
+    console.log(this.LikeBegin);
+    this.numberOfLikes = this.likes$!.length;
+    console.log(this.numberOfLikes);
   }
   onClick(): void {
+    if (this.LikeStatus != this.LikeBegin) {
+      let like1: Like;
+      if (this.LikeBegin) {
+        like1 = this.likes$!.find((e) => e.userId === this.userId);
+        this.likesService.EditLike(like1);
+      } else {
+        like1 = {
+          userId: this.userId!,
+          postId: this.data.postId,
+        };
+        this.likesService.addLike(like1);
+      }
+    }
     this.dialogRef.close();
   }
-  commentOn() {
-    this.showComments = !this.showComments;
-  }
-  addLike() {
+
+  changeBtn() {
     this.LikeBtn = !this.LikeBtn;
-    if (this.LikeOn) {
+    if (this.LikeStatus) {
       this.numberOfLikes!--;
-      this.LikeOn = !this.LikeOn;
+      this.LikeStatus = !this.LikeStatus;
     } else {
       this.numberOfLikes!++;
-      this.LikeOn = !this.LikeOn;
+      this.LikeStatus = !this.LikeStatus;
     }
   }
   // addLike() {
@@ -92,5 +109,8 @@ export class PostViewComponent implements OnInit {
     this.commentsServise.addComment(comment);
     this.comments$?.push(comment);
     this.content = '';
+  }
+  commentOn() {
+    this.showComments = !this.showComments;
   }
 }
