@@ -13,10 +13,8 @@ export class UserService {
   private passwordUrl= 'https://localhost:44349/api/Users/Edit'
   private user?: User;
   // public userId?: number;
-  private tokenservice: TokenService;
 
-  constructor(private http: HttpClient) {
-    this.tokenservice = new TokenService(http);
+  constructor(private http: HttpClient, private tokenService : TokenService) {
   }
 
   getUser(userId?: string): Observable<User> {
@@ -25,7 +23,7 @@ export class UserService {
         'Content-Type': 'text',
       }),
     };
-    return this.tokenservice
+    return this.tokenService
       .getToken()
       .pipe(
         mergeMap((res) => this.http.get<any>(this.getUsrUrl + res, httpOptions))
@@ -54,4 +52,5 @@ export class UserService {
     }
     return this.http.put<User>(this.passwordUrl, user, httpOptions);
   }
+
 }
