@@ -49,9 +49,17 @@ export class PostComponent implements OnInit {
         userId: this.post.userId,
       },
     });
-    dialogRefview.afterClosed().subscribe((data) => {});
+    dialogRefview.afterClosed().subscribe((res) => {
+      if (!res) {
+        this.addLike();
+      }
+    });
   }
   update() {
     this.postService.EditPost(this.post).subscribe();
+  }
+
+  addLike() {
+    throw new Error('Function not implemented.');
   }
 }
