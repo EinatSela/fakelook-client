@@ -20,12 +20,8 @@ export class MainFeedComponent implements OnInit {
   constructor(private router: Router, private tokenService: TokenService, private userService : UserService) {}
 
   ngOnInit(): void {
-    // this.tokenService.getToken().subscribe((res) => {
-    //   this.userId = res;
-    // });
     this.userService.getUser().subscribe((res) => {
       this.user = res;
-      console.log(this.user);
     });  
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { defaultIfEmpty, iif, map } from 'rxjs';
+import { catchError, defaultIfEmpty, iif, map, of } from 'rxjs';
 import { User } from '../models/user';
 import { SignUpService } from '../services/sign-up.service';
 import { UserService } from '../services/user.service';
@@ -15,6 +15,7 @@ export class SignupFormComponent implements OnInit {
   newUser?: User;
   ValErrorMsg: boolean = false;
   PassErrorMsg: boolean = false;
+  UsrNameErrMsg : boolean = false;
 
 
 
@@ -35,6 +36,7 @@ export class SignupFormComponent implements OnInit {
   ) {
     this.PassErrorMsg = false;
     this.ValErrorMsg = false;
+    this.UsrNameErrMsg = false;
 
     if (
       newFirstname &&
@@ -59,11 +61,15 @@ export class SignupFormComponent implements OnInit {
           Age: newAge,
         };
 
-        this.userService.getUserByName(newUsername).pipe(
-          map((res)=>{console.log(res)}),
-          defaultIfEmpty(this.signupService.addUser(this.newUser))
-        );
-        // this.signupService.addUser(this.newUser);
+        this.userService.getUserByName(newUsername).subscribe(res=>{
+          if(res){
+            console.log('username already exists')
+            this.UsrNameErrMsg = true;
+          }
+          else {
+            this.signupService.addUser(this.newUser as User);
+          }
+        });
       }
     }
     else{

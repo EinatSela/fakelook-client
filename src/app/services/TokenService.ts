@@ -14,14 +14,16 @@ export class TokenService {
 
   getToken(): Observable<any> {
     var exp = sessionStorage.getItem('expTime');
-    if((exp != null) && (new Date(exp) < new Date()))
+    let currTime = new Date()
+    if((exp != null) && (parseInt(exp) < currTime.getTime()))
     { 
+
       this.deleteToken();
-     this.router.navigateByUrl('')
+      this.router.navigateByUrl('')
     }
     let d = new Date();
     d.setMinutes(d.getMinutes()+15);
-    sessionStorage.setItem('expTime', d.toDateString());
+    sessionStorage.setItem('expTime', d.getTime().toString());
     
     this.token = sessionStorage.getItem('token');
     let httpOptions = {

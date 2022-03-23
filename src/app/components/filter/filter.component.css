@@ -1,0 +1,15 @@
+.date-filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container{
+    margin: 3%;
+}
+.container div{
+    margin:1%;
+}
+
+button{
+    margin-top:3%;
+}

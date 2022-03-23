@@ -171,3 +171,9 @@ input[type="submit"]:hover {
 .left a{
   color: #ce5c74;
 }
+
+.ErrMsg{
+  color: red;
+  font-weight: 600;
+  margin-bottom: 1%;
+}

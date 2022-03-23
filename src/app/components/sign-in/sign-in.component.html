@@ -24,6 +24,9 @@
           required #password
         /><i class="validation"><span></span><span></span></i>
       </p>
+      <div class="ErrMsg" *ngIf="ErrMsg">
+        Invalid Username or Password
+      </div>
       <p>
         <input type="submit" id="login" value="Login" (click)="login(username.value, password.value)">
       </p>
