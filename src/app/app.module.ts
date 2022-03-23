@@ -25,6 +25,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MatButtonModule } from '@angular/material/button';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     PostViewComponent,
     MainFeedLeftComponent,
     ChangePasswordComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
