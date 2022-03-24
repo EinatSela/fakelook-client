@@ -3,6 +3,7 @@ import { Post } from 'src/app/models/Post';
 import { Query } from 'src/app/models/query';
 import { PostsService } from 'src/app/services/posts.service';
 import { UserService } from 'src/app/services/user.service';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-filter',
@@ -15,25 +16,30 @@ export class FilterComponent implements OnInit {
   public publisherName: string;
   public publisherId: null | number[] = [];
   @Output() updatePosts = new EventEmitter<Post[]>();
-
-  // public filterTags: null| string[] = null;
-  // public filterUserTags: null| string[] = null;
+  public filterTags: string;
+  public filterTagsArr: null | string[] = [];
 
   constructor(
     private postService: PostsService,
     private userService: UserService
   ) {
     this.publisherName = '';
+    this.filterTags = '';
   }
 
   ngOnInit(): void {}
   filter() {
     this.initPublishId();
+    this.filterTagsArr = this.parserInput(this.filterTags);
+    if (this.filterTagsArr[0] == '') {
+      this.filterTagsArr = null;
+    }
     let query: Query;
     query = {
       minDate: this.minDate,
       maxDate: this.maxDate,
       publisherId: this.publisherId,
+      filterTags: this.filterTagsArr,
     };
     this.postService
       .FilterPost(query)
@@ -45,6 +51,8 @@ export class FilterComponent implements OnInit {
     this.publisherName = '';
     this.maxDate = undefined;
     this.minDate = undefined;
+    this.filterTags = '';
+    this.filterTagsArr = [];
   }
   resetFilter() {
     this.postService
@@ -53,7 +61,7 @@ export class FilterComponent implements OnInit {
   }
   
   initPublishId() {
-    let arr = this.parserPublish(this.publisherName);
+    let arr = this.parserInput(this.publisherName);
     console.log(arr);
     if (arr[0] != '') {
       arr.forEach((name) =>
@@ -75,7 +83,7 @@ export class FilterComponent implements OnInit {
     }
     return -1;
   }
-  parserPublish(userNames: string): string[] {
+  parserInput(userNames: string): string[] {
     let arr = userNames.split(',');
     return arr;
   }
