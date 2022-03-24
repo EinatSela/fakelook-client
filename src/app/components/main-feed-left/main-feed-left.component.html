@@ -9,7 +9,14 @@
     >
     <mat-icon>add_location</mat-icon>
     </button>
-      <div *ngIf="userName" class="userid">Welcome {{ userName }}! </div>
+      <div *ngIf="userName" class="userid">
+        <div *ngIf="userId != 0">
+          Welcome {{ userName }}!
+        </div> 
+        <div *ngIf="userId == 0" class="error">
+          {{ userName }}
+        </div>
+      </div>
       
       <button class='logout' (click)="logout()">Logout</button>
     </div>

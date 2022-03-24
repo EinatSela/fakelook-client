@@ -51,6 +51,7 @@ export class FilterComponent implements OnInit {
       .getAllPosts()
       .subscribe((res) => this.updatePosts.emit(res));
   }
+  
   initPublishId() {
     let arr = this.parserPublish(this.publisherName);
     console.log(arr);

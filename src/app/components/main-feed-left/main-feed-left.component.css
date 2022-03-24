@@ -41,4 +41,8 @@
     padding: 3%;
     /* border: solid rgb(170, 170, 170) 1px; */
   }
+
+  .error{
+    color: red;
+  }
   
