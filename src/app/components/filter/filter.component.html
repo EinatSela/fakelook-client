@@ -20,11 +20,10 @@
       </div>
       <div class="Tags headline">Tags:</div>
       <div class="Tags-input">
-        <input type="text" #tags />
+        <input type="text" #tags name="filterTags" [(ngModel)]="filterTags" />
       </div>
     </div>
     <div class="button">
-
       <button mat-fab color="basic" (click)="filter()">
         <mat-icon>search</mat-icon>
       </button>

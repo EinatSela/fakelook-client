@@ -3,6 +3,6 @@ export interface Query {
   maxDate?: Date;
   publisherName?: string[];
   publisherId?: null | number[];
-  filterTags?: string[];
+  filterTags?: null | string[];
   filterUserTags?: string[];
 }

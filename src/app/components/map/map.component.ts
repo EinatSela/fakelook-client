@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  Input,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {
   AcMapComponent,
@@ -25,13 +20,12 @@ const randomLocation = require('random-location');
   providers: [ViewerConfiguration],
 })
 export class MapComponent implements OnInit {
-
   @Input() posts: Post[] | undefined;
 
   constructor(
     private converterService: ConverterService,
     public dialog: MatDialog
-    ) {}
+  ) {}
 
   @ViewChild('map') map!: AcMapComponent;
   entities$!: Observable<AcNotification>;

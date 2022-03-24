@@ -10,7 +10,7 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
-  ErrMsg  =false;
+  ErrMsg = false;
   user?: User;
   constructor(private signInService: SignInService, private router: Router) {}
 
@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
     this.ErrMsg = true;
   }
 
-  goToChangePassword(){
+  goToChangePassword() {
     this.router.navigate(['/change-password']);
   }
 }
