@@ -1,5 +1,11 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog, MatDialogState } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -21,15 +27,16 @@ export class MainFeedComponent implements OnInit {
   public user?: User;
   public userId?: string;
   public posts$: Post[] | undefined;
-  @ViewChild(MapComponent) mapComponent? : MapComponent;
-  public ErrMsg : string = "You Logged out of Fakelook. Please logout and sign in again";
+  @ViewChild(MapComponent) mapComponent?: MapComponent;
+  public ErrMsg: string =
+    'You Logged out of Fakelook. Please logout and sign in again';
 
   constructor(
     private router: Router,
     private postsService: PostsService,
     private tokenService: TokenService,
     private userService: UserService
-  ) {  }
+  ) {}
 
   ngOnInit(): void {
     this.userService.getUser().subscribe((res) => {
@@ -39,6 +46,5 @@ export class MainFeedComponent implements OnInit {
   }
   filter(posts: Post[]) {
     this.posts$ = posts;
-    this.mapComponent?.filter(posts);
   }
 }
