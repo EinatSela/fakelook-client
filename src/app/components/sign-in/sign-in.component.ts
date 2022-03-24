@@ -18,7 +18,6 @@ export class SignInComponent implements OnInit {
 
   goToSignup() {
     this.router.navigate(['/signup']);
-    console.log('clicked');
   }
 
   login(NewUserName: string, newPassword: string) {
@@ -28,7 +27,7 @@ export class SignInComponent implements OnInit {
     };
     //check if login is legal
     this.signInService.login(this.user);
-    // this.ErrMsg = true;
+    this.ErrMsg = true;
   }
 
   goToChangePassword(){
