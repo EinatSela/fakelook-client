@@ -1,12 +1,7 @@
-import { Component, EventEmitter, Inject, Input, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/Post';
-import { PostsService } from 'src/app/services/posts.service';
 
 export interface PostData {
   description: string;
