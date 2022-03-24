@@ -40,7 +40,6 @@ export class MapComponent implements OnInit {
   Cesium = Cesium;
 
   ngOnInit(): void {
-    console.log(this.posts);
     this.entities$ = of(this.posts as Post[]).pipe(
       map((posts) => {
         return posts.map((post) => ({
@@ -64,5 +63,18 @@ export class MapComponent implements OnInit {
       },
     });
     dialogRefview.afterClosed().subscribe((data) => {});
+  }
+
+  filter(posts: Post[]){
+    this.entities$ = of(posts).pipe(
+      map((posts) => {
+        return posts.map((post) => ({
+          id: (post.id + '').toString(),
+          actionType: ActionType.ADD_UPDATE,
+          entity: this.converterService.postToAcEntity(post),
+        }));
+      }),
+      mergeMap((entity) => entity)
+    );
   }
 }
