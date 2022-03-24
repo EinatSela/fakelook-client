@@ -53,7 +53,6 @@ export class AddPostComponent implements OnInit {
     };
     this.postService.newPost(newPost);
     this.router.navigate(['main-feed']).then(() => {
-      //window.location.reload();
     });
   }
   public getLocation(): void {
