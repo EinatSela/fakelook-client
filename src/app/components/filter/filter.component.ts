@@ -13,7 +13,7 @@ export class FilterComponent implements OnInit {
   public minDate?: Date;
   public maxDate?: Date;
   public publisherName: string;
-  public publisherId: null | number[] = null;
+  public publisherId: null | number[] = [];
   @Output() updatePosts = new EventEmitter<Post[]>();
 
   // public filterTags: null| string[] = null;
@@ -33,20 +33,34 @@ export class FilterComponent implements OnInit {
     query = {
       minDate: this.minDate,
       maxDate: this.maxDate,
-      //publisherId: this.publisherId,
+      publisherId: this.publisherId,
     };
     this.postService
       .FilterPost(query)
       .subscribe((res) => this.updatePosts.emit(res));
+    this.reset();
+  }
+  reset() {
+    this.publisherId = [];
+    this.publisherName = '';
+    this.maxDate = undefined;
+    this.minDate = undefined;
+  }
+  resetFilter() {
+    this.postService
+      .getAllPosts()
+      .subscribe((res) => this.updatePosts.emit(res));
   }
   initPublishId() {
-    let arr = this.publisherName.split(',');
-    console.log(this.publisherName);
-    if (this.publisherName?.length > 0) {
-      let res = this.getIdByUserName(this.publisherName);
-      //this.publisherId?.push(parseInt(res));
+    let arr = this.parserPublish(this.publisherName);
+    console.log(arr);
+    if (arr[0] != '') {
+      arr.forEach((name) =>
+        this.publisherId!.push(Number(this.getIdByUserName(name)))
+      );
+    } else {
+      this.publisherId = null;
     }
-    console.log(this.publisherId);
   }
   getIdByUserName(value: string) {
     let ids = Object.keys(this.userService.dict);
@@ -59,5 +73,9 @@ export class FilterComponent implements OnInit {
       }
     }
     return -1;
+  }
+  parserPublish(userNames: string): string[] {
+    let arr = userNames.split(',');
+    return arr;
   }
 }
