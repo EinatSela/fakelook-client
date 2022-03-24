@@ -4,7 +4,9 @@ h1 {
 .container {
   align-items: center;
   justify-content: center;
+  padding: 5%;
   border: 5px solid cadetblue;
+  border-radius: 5%;
 }
 div {
   align-content: center;
@@ -12,11 +14,16 @@ div {
   flex-direction: column;
 }
 input {
-  /* padding: 30px 20px; */
   height: 40px;
   margin: 8px 0;
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
   border: 1px solid black;
+}
+
+p{
+  margin-bottom: 0;
+  margin-top: 4%;
+  font-weight: 400;
 }

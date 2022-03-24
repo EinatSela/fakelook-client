@@ -25,9 +25,7 @@ export class MainFeedComponent implements OnInit {
   public ErrMsg : string = "You Logged out of Fakelook. Please logout and sign in again";
 
   constructor(
-    private router: Router,
     private postsService: PostsService,
-    private tokenService: TokenService,
     private userService: UserService
   ) {  }
 
@@ -39,6 +37,5 @@ export class MainFeedComponent implements OnInit {
   }
   filter(posts: Post[]) {
     this.posts$ = posts;
-    this.mapComponent?.filter(posts);
   }
 }

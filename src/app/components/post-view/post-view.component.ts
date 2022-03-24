@@ -7,6 +7,7 @@ import { TokenService } from 'src/app/services/TokenService';
 import { Comment } from 'src/app/models/comment';
 import { ThisReceiver } from '@angular/compiler';
 import { TagsService } from 'src/app/services/tags.service';
+import { UserService } from 'src/app/services/user.service';
 export interface PostData {
   description: string;
   imageSorce: string;
@@ -28,18 +29,21 @@ export class PostViewComponent implements OnInit {
   public LikeStatus: boolean = false;
   public LikeBegin: boolean = false;
   public showComments: boolean = false;
+  public userName : string = '';
   constructor(
     private likesService: LikesService,
     private commentsServise: CommentsService,
     private tokenService: TokenService,
     public dialogRef: MatDialogRef<PostViewComponent>,
     private tagService : TagsService,
+    private userService : UserService,
     @Inject(MAT_DIALOG_DATA) public data: PostData
   ) {}
 
   ngOnInit(): void {
     this.tokenService.getToken().subscribe((res) => {
       this.userId = res;
+      this.userName = this.userService.dict[res];
     });
     this.likesService
       .getLikesByPostId(this.data.postId)
