@@ -1,15 +1,23 @@
 .date-filter{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .container{
     margin: 3%;
+    
 }
 .container div{
     margin:1%;
 }
-
+.headline{
+    padding-top:3%;
+}
 button{
-    margin-top:3%;
+    margin-top:10%;
+}
+
+h3{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
 }

@@ -17,6 +17,8 @@
     </div>
   </div>
   <div *ngIf="post?.userId == userId" class="edit-button">
-    <button (click)="Edit()" mat-stroked-button color="primary">Edit</button>
+    <button mat-mini-fab color="Accent" (click)="Edit()" mat-stroked-button color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
 </div>

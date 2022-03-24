@@ -56,9 +56,9 @@ export class TagsService {
     }
     indexes.forEach(index => {
       let tagContent = desc.substring(index+1);
-      if(tagContent.indexOf(' ')!= null)
+      if(tagContent.indexOf(' ')!= null && tagContent.indexOf(' ')!= -1)
       {
-        tagContent = tagContent.substring(0,desc.indexOf(' '));
+        tagContent = tagContent.substring(0,tagContent.indexOf(' '));
       }
       let tag : Tag; 
       tag = {
