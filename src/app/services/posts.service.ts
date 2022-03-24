@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Post } from '../models/Post';
 import { Query } from '../models/query';
 
@@ -8,7 +8,8 @@ import { Query } from '../models/query';
   providedIn: 'root',
 })
 export class PostsService {
-  public postArray: Observable<Post[]> | undefined;
+  public postArray?: Post[];
+  public postSubject = new BehaviorSubject<Post[]>([]);
   private postUrl = 'https://localhost:44349/Posts/';
   constructor(private http: HttpClient) {}
 
@@ -18,7 +19,13 @@ export class PostsService {
         'Content-Type': 'application/json',
       }),
     };
-    return this.http.get<Post[]>(this.postUrl + 'All', httpOptions);
+    this.http
+      .get<Post[]>(this.postUrl + 'All', httpOptions)
+      .subscribe((res) => {
+        this.postArray = res;
+        this.postSubject.next(res);
+      });
+    return this.postSubject.asObservable();
   }
 
   public newPost(post: Post) {
@@ -27,7 +34,12 @@ export class PostsService {
         'Content-Type': 'application/json',
       }),
     };
-    this.http.post<Post>(this.postUrl + 'Add', post, httpOptions).subscribe();
+    this.http.post<Post>(this.postUrl + 'Add', post, httpOptions).pipe(
+      tap((post1) => {
+        this.postArray?.push(post1);
+        this.postSubject.next(this.postArray!);
+      })
+    );
   }
 
   public EditPost(post: any): Observable<any> {
@@ -44,6 +56,12 @@ export class PostsService {
         'Content-Type': 'application/json',
       }),
     };
-    return this.http.post<Post[]>(this.postUrl + 'ByQuery', query, httpOptions);
+    this.http
+      .post<Post[]>(this.postUrl + 'ByQuery', query, httpOptions)
+      .subscribe((filterPosts) => {
+        this.postArray = filterPosts;
+        this.postSubject.next(filterPosts);
+      });
+    return this.postSubject.asObservable();
   }
 }

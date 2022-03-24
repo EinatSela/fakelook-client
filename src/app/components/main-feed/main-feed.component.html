@@ -8,15 +8,15 @@
   </div>
   <div *ngIf="!user">
     <app-main-feed-left
-    (updatePosts)="filter($event)"
-    [userId]="0"
-    [userName]="ErrMsg"
-  ></app-main-feed-left>
+      (updatePosts)="filter($event)"
+      [userId]="0"
+      [userName]="ErrMsg"
+    ></app-main-feed-left>
   </div>
   <div class="feed">
     <mat-tab-group mat-align-tabs="end">
       <mat-tab label="Timeline">
-        <app-posts *ngIf="user" [userId]="user.id" [posts]="posts$" ></app-posts>
+        <app-posts *ngIf="user" [userId]="user.id" [posts]="posts$"></app-posts>
       </mat-tab>
       <mat-tab label="Map">
           <app-map *ngIf="posts$" [posts]="posts$"></app-map>

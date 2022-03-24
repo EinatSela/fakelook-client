@@ -6,7 +6,7 @@ import {
   ViewerConfiguration,
   ActionType,
 } from 'angular-cesium';
-import { map, mergeMap, Observable, of } from 'rxjs';
+import { map, mergeMap, Observable, of, pairwise } from 'rxjs';
 import { Post } from 'src/app/models/Post';
 import { ConverterService } from 'src/app/services/converter.service';
 import { PostsService } from 'src/app/services/posts.service';
@@ -24,7 +24,8 @@ export class MapComponent implements OnInit {
 
   constructor(
     private converterService: ConverterService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private postService: PostsService
   ) {}
 
   @ViewChild('map') map!: AcMapComponent;
@@ -34,16 +35,22 @@ export class MapComponent implements OnInit {
   Cesium = Cesium;
 
   ngOnInit(): void {
-    this.entities$ = of(this.posts as Post[]).pipe(
+    this.initMap();
+  }
+  initMap() {
+    this.entities$ = this.postService.getAllPosts().pipe(
+      pairwise(),
       map((posts) => {
-        return posts.map((post) => ({
+        const combine = posts[0].concat(posts[1]);
+        return combine.map((post) => ({
           id: (post.id + '').toString(),
-          actionType: ActionType.ADD_UPDATE,
+          actionType: this.getActionType(post, posts[1]),
           entity: this.converterService.postToAcEntity(post),
         }));
       }),
       mergeMap((entity) => entity)
     );
+    console.log(this.entities$);
   }
 
   showFullPost(post: Post) {
@@ -58,17 +65,11 @@ export class MapComponent implements OnInit {
     });
     dialogRefview.afterClosed().subscribe((data) => {});
   }
-
-  filter(posts: Post[]){
-    this.entities$ = of(posts).pipe(
-      map((posts) => {
-        return posts.map((post) => ({
-          id: (post.id + '').toString(),
-          actionType: ActionType.ADD_UPDATE,
-          entity: this.converterService.postToAcEntity(post),
-        }));
-      }),
-      mergeMap((entity) => entity)
-    );
+  getActionType(post: Post, newPosts: Post[]): ActionType {
+    let action;
+    newPosts.find((p) => p.id === post.id)
+      ? (action = ActionType.ADD_UPDATE)
+      : (action = ActionType.DELETE);
+    return action;
   }
 }
