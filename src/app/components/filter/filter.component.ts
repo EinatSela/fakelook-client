@@ -39,6 +39,7 @@ export class FilterComponent implements OnInit {
       .FilterPost(query)
       .subscribe((res) => this.updatePosts.emit(res));
   }
+  
   initPublishId() {
     let arr = this.publisherName.split(',');
     console.log(this.publisherName);
