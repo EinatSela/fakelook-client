@@ -18,7 +18,6 @@ export class SignInComponent implements OnInit {
 
   goToSignup() {
     this.router.navigate(['/signup']);
-    console.log('clicked');
   }
 
   login(NewUserName: string, newPassword: string) {
